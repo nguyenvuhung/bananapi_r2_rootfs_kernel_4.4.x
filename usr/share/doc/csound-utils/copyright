@@ -1,0 +1,415 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: CSound
+Upstream-Contact: csound-devel@lists.sourceforge.net
+Source: http://csound.sourceforge.net/
+Comment: Csound developers consist of the following members:
+ .
+ Alan deLespinasse
+ Alex Norman
+ Allan S C Lee
+ Amar Chaudhary
+ Andrés Cabrera
+ Anthony M. Kozar Jr
+ Bill Gardner
+ Bill Verplank
+ Brian Carty
+ Cesare Marilungo
+ Christopher Wilson
+ Clemens Ladisch
+ Corbin Champion
+ Dan Ellis
+ Dave Madole
+ Dave Philips
+ David Akbari
+ David Boothe
+ Davide Rocchesso
+ David McIntyre
+ Dmitriy Startsev <dstartsev@rambler.ru>
+ Eli Breder
+ Erik de Castro Lopo
+ Erik Spjut
+ Fabio P. Bertolotti
+ Gabriel Maldonado
+ Georg Essl
+ Greg Sullivan
+ Hans Mikelson
+ Istvan Varga
+ Jean Piché
+ Jens Groh
+ Jezar Wakefield (?)
+ John ffitch
+ John D. Ramsdell
+ Juan Pampin
+ Keith Henderson
+ Kelly Fitz
+ Kevin Conder
+ Makoto Matsumoto
+ Marc Resibois
+ Mark Dolson
+ Matt Gerassimoff
+ Matt Gilliard
+ Matt Ingalls
+ Matt Wright
+ Maurizio Umberto Puxeddu
+ Max Mathews
+ Michael A. Casey
+ J. Michael Clark
+ Michael Gogins
+ Mike Berry
+ Nick Collins
+ Nicola Bernardini
+ Øyvind Brandtsegg
+ Oscar Pablo Di Liscia
+ Paris Smaragdis
+ Paul Lansky
+ Perry Cook
+ Willian 'Pete' Moss
+ Peter Neubäcker
+ Peter Nix
+ Phil Burk
+ Rasmus Ekman
+ Richard Boulanger
+ Richard Dobson
+ Richard W.E. Furse
+ Richard Karpen
+ Robin Whittle
+ Rob Shaw
+ Rory Walsh
+ Sami Khoury
+ Samuel Groner
+ Sean M. Costello
+ Simon Schampijer
+ Stefan Bilbao
+ Steven Yi
+ Takuji Nishimura
+ Thom Johansen
+ Tito Latini
+ Tom Erbe
+ Tom Sullivan
+ Torgeir Strand Henriksen
+ Trevor Wishart
+ Victor Lazzarini
+ Ville Pulkki
+ .
+ Subsets of above are not treated separately - i.e. only files
+ owned (solely or in part) by others or unusually licensed are
+ noted separately.
+ .
+ This list was last updated 2011-03-02.
+Copyright: 1986-1992,1994,1997, the Massachussetts Institute of Technology
+ 1991-2008, Barry Vercoe
+ 1991-2011, John ffitch
+ 1991-2011, Csound developers
+License: LGPL-2.1+
+Files-Excluded: 
+ Opcodes/scansyn*
+ csound5_osx_installer_files.tar.gz
+ samples/VintageDreamsWaves-v2.sf2
+ dependencies/*
+ iOS/*
+ android/*
+ emscripten/*
+ installer/*
+ nacl/*
+
+Files: *
+Copyright: 1986-2015 Csound Developers
+License: LGPL-2+
+
+Files: frontends/fltk_gui/Fl_Native_File_Chooser*
+Copyright: 2004, Greg Ercolano
+License: LGPL-2+
+
+Files: Opcodes/Loris/*
+Copyright: 1999-2010, Kelly Fitz
+ 1999-2010, Lippold Haken
+License: GPL-2+
+
+Files: Opcodes/linuxjoystic.*
+Copyright: 2010, Justin Glenn Smith <noisesmith@gmail.com>
+License: LGPL-2.1+
+
+Files: OOps/random.c
+Copyright: 1997-2002, Makoto Matsumoto
+ 1997-2002, Takuji Nishimura
+License: other-random
+
+Files: examples/cscore/pulse.c
+ examples/cscore/switch.c
+Copyright: 1991, Barry Vercoe
+License: GPL-2+
+
+Files: Engine/cs_new_dispatch.c
+Copyright: 2012, Martin Brain <mjb@cs.bath.ac.uk>
+ 2013, John ffitch
+License: LGPL-2.1+
+
+Files: InOut/ipmidi.c
+Copyright: 2012 Henri Manson
+License: LGPL-2.1+
+
+Files: frontends/fltk_gui/Fl_Native_File_Chooser_FLTK.H
+ frontends/fltk_gui/Fl_Native_File_Chooser_FLTK.cxx
+Copyright: 2005, Nathan Vander Wilt
+License: LGPL-2+
+
+Files: Opcodes/crossfm.*
+Copyright: 2005, Francois Pinot
+License: LGPL-2.1+
+
+Files: Opcodes/fareygen.c
+ Opcodes/fareyseq.c
+Copyright: 2010, Georg Boenn
+License: LGPL-2.1+
+
+Files: Opcodes/dssi4cs/src/ladspa.h
+ frontends/csladspa/ladspa.h
+Copyright: 2000-2002, Paul Barton-Davis
+ 2000-2002, Richard W.E. Furse
+License: LGPL-2.1+
+
+Files: SDIF/sdif.*
+ SDIF/sdif-mem.*
+Copyright: 1996-1999, The Regents of the University of California
+License: other-sdif
+
+Files: Opcodes/pvscent.c
+Copyright: 2005, Alan OCinneide
+ 2005, John ffitch
+License: LGPL-2.1+
+
+Files: Opcodes/dssi4cs/src/dssi.h
+Copyright: 2004, Chris Cannam
+ 2004, Sean Bolton
+ 2004, Steve Harris
+License: LGPL-2.1+
+
+Files: Opcodes/dsputil.c
+Copyright: 1988, Codemist Ltd
+ 1991, Barry Vercoe
+ 1991, Dan Ellis
+ 1991, John ffitch
+License: LGPL-2.1+
+
+Files: Opcodes/sfenum.h
+Copyright: 1995-1998, Creative Technology Ltd.
+License: LGPL-2.1+
+
+Files: frontends/csoundapi_tilde/csoundapi_tilde.c
+Copyright: 2005-2007, Victor Lazzarini
+ 2008, Peter Brinkmann
+License: LGPL-2.1+
+
+Files: Opcodes/serial.c
+Copyright: 2006, Tod E. Kurt <tod@todbot.com>
+ 2011, matt ingalls
+License: LGPL-2+
+
+Files: Opcodes/cpumeter.c
+Copyright: 2011, John ffitch
+ 2002, James C. Warner
+License: LGPL-2+
+
+Files: Opcodes/cellular.c
+Copyright: 2011, Gleb Rogozinsky
+License: LGPL-2.1+
+
+Files: examples/cplusplus/fl_controller.cpp
+Copyright: 2004, Iain Duncan and Michael Gogins.
+License: other-LGPL-cplusplus
+
+Files: frontends/CsoundVST/pyrun.c
+Copyright: 1999-2000, The University of Chicago
+License: other-sa
+
+Files: frontends/max_csound_tilde/*
+Copyright: 2006-2010 Davis Pyon
+License: LGPL-2.1+
+
+Files: samples/hrtf-*.dat
+Copyright: 1994, MIT Media Laboratory
+License: other-hrtf-data
+ This data is Copyright 1994 by the MIT Media Laboratory.
+ It is provided free with no restrictions on use, provided the
+ authors are cited when the data is used in any research or
+ commercial application.
+Comment: The data was collected by Bill Gardner <billg@media.mit.edu>
+ and Keith Martin <kdm@media.mit.edu>
+
+Files: samples/sf_GMbank.sf2
+Copyright: none
+License: public-domain
+ The file has Public Domain in its license field
+
+Files: InOut/libmpadec/*
+Copyright: 2002-2004, Dmitriy Startsev (dstartsev@rambler.ru)
+License: LGPL-2.1+
+
+Files: SuSE/*
+Copyright: 2011, SUSE LINUX Products GmbH, Nuernberg, Germany
+License: LGPL-2.1+
+
+Files: 
+ frontends/CsoundAC/algrd_internal.h
+ frontends/CsoundAC/algsmfrd_internal.h
+ frontends/CsoundAC/allegro.cpp
+ frontends/CsoundAC/allegro.h
+ frontends/CsoundAC/allegroserial.cpp
+ frontends/CsoundAC/allegrosmfrd.cpp
+ frontends/CsoundAC/allegrowr.cpp
+ frontends/CsoundAC/mfmidi.cpp
+ frontends/CsoundAC/strparse.cpp
+ frontends/CsoundAC/strparse.h
+ frontends/CsoundAC/trace.cpp
+ frontends/CsoundAC/trace.h
+Copyright: 1999-2000, Ross Bencina and Phil Burk
+ 2001-2006, Roger B. Dannenberg
+License: Expat
+Comment: These files are taken from the portSFM project
+
+Files: debian/*
+Copyright: 2007-2011, Felipe Sateler <fsateler@debian.org>
+ 2008-2010, Jonas Smedegaard <dr@jones.dk>
+License: GPL-2+
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files
+ (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, merge,
+ publish, distribute, sublicense, and/or sell copies of the Software,
+ and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2, or (at
+ your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ (GPL) version 2 can be found in '/usr/share/common-licenses/GPL-2'.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License (LGPL) version 2 can be found in
+ '/usr/share/common-licenses/LGPL-2'.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+License: LGPL-2.1+
+ This software is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This software is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ Some files differ from above by using other combinations of "this
+ file", "this header", "this software, "this program" and "the Csound
+ Library", but otherwise identical license and disclaimer.
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License (LGPL) version 2.1 can be found in
+ '/usr/share/common-licenses/LGPL-2.1'.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+License: other-LGPL-cplusplus
+ fl_controller is licensed under the terms of the GNU Lesser General Public License.
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License (LGPL), current version, can be found in
+ '/usr/share/common-licenses/LGPL'.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+License: other-random
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+ .
+  2. Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+ .
+  3. The names of its contributors may not be used to endorse or promote
+     products derived from this software without specific prior written
+     permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: other-sa
+ This file may be freely redistributed without license or fee provided
+ this copyright message remains intact.
+
+License: other-sdif
+ Permission to use, copy, modify, and distribute this software and its
+ documentation, without fee and without a signed licensing agreement, is hereby
+ granted, provided that the above copyright notice, this paragraph and the
+ following two paragraphs appear in all copies, modifications, and
+ distributions.  Contact The Office of Technology Licensing, UC Berkeley, 2150
+ Shattuck Avenue, Suite 510, Berkeley, CA 94720-1620, (510) 643-7201, for
+ commercial licensing opportunities.
+ .
+     IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+     SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS,
+     ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF
+     REGENTS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+     REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT
+     LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+     FOR A PARTICULAR PURPOSE. THE SOFTWARE AND ACCOMPANYING
+     DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED "AS IS".
+     REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
+     ENHANCEMENTS, OR MODIFICATIONS.
+

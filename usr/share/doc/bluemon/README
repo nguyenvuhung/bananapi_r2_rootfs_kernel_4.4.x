@@ -1,0 +1,87 @@
+Bluetooth Monitor System
+------------------------
+
+This comprises a daemon which monitors the status of a Bluetooth device (such
+as a mobile phone) and emits DBUS signals when the device gets within a certain
+threshold distance of the computer, a client program can start and stop
+programs in response to these signals and a program which can query the status
+of a device. The device must be paired with your computer. When starting the
+daemon you specify the Bluetooth address of the device and a threshold; the
+client you start with the Bluetooth address and programs to run whenever it
+crosses the threshold.  
+
+IPC is done over DBUS, so anything which can use DBUS can trap signals from
+the daemon and query the status (see bluemon-dbus(7)) The XML
+protocol description file is installed to 
+$PREFIX/usr/share/doc/bluemon/bluemon-dbus.xml
+
+Installation
+------------
+
+See INSTALL
+
+Configuration
+-------------
+
+There is an example config file and init script in bluemon.default and
+bluemon.init (these are installed in $PREFIX/usr/share/doc/bluemon/examples/).
+The config file is just a convenience since all parameters must be passed on
+the command line. The command line syntax for bluemon, bluemon-client and
+bluemon-query is documented in the section 1 manpages.
+
+Starting Bluemon
+----------------
+
+The sample initscript should be copied to the system initscript directory and
+used to start the program. It uses a config file to read the parameters to pass
+to the program. The config file is searched for as /etc/default/bluemon,
+/etc/bluemon.conf or /etc/bluemon/bluemon.conf. If not, use man or --help to
+decide which parameters you wish to use. A good sample command line is:
+
+bluemon -qai 100 -t 210 -b BLUETOOTHADDR
+
+as root, and then as a user:
+
+bluemon-client -u "UP COMMAND" -d "DOWN COMMAND" -b BLUETOOTHADDR
+
+where UP COMMAND is executed when the signal passes the threshold upwards
+and DOWN COMMAND when it passes the threshold downwards.
+
+Running bluemon with no session
+-------------------------------
+
+If you want to run bluemon as a purely system component, without having a
+session or a login to run the client program, you can. Simply run the client command from an initscript in the background:
+
+start-stop-daemon --start -x /usr/bin/bluemon-client -p /var/run/bluemon-client.pid -b -d / -m -- -u "UP COMMAND" -d "DOWN COMMAND" -b BLUETOOTHADDR
+
+and to stop it:
+
+start-stop-daemon --stop -x /usr/bin/bluemon-client -p /var/run/bluemon-client.pid  
+
+you can add a -c parameter to start-stop-daemon to run it as a non-root user.
+
+Up/Down Commands
+----------------
+
+The Up command is executed when the link quality becomes good. The Down command
+is executed when the link quality becomes bad.
+
+Thresholds
+----------
+
+The system works by sampling the signal strength of the Bluetooth connection
+and then using a user-defined threshold to decide on whether the device is 'in
+range' or not. Threshold values are in the range 0-255. Higher values indicate
+a more sensitive system which requires the device to be in close proximity.
+Lower values are less sensitive and will consider the device to be `in range'
+even if it is quite a long way away. Features such as doors and walls cut the
+signal strength such that a threshold of 'in the same room' is easy to achieve.
+Testing suggests that values of around 210 for the threshold is good. For more
+detail you can read section 4.1 of my paper on the subject
+(http://www.matthew.ath.cx/publications/2005-JohnsonSta-hats.pdf)
+
+Comments Etc
+------------
+
+To Matthew Johnson <debian@matthew.ath.cx>

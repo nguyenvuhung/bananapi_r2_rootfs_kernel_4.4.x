@@ -1,0 +1,8 @@
+# This is private data. Do not parse.
+WHAT=handle-power-key:handle-suspend-key:handle-lid-switch
+MODE=block
+UID=1000
+PID=1247
+WHO=pi
+WHY=Mate power manager handles these events
+FIFO=/run/systemd/inhibit/2.ref

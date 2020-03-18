@@ -1,0 +1,18 @@
+I:12422004
+E:ID_VENDOR=Linux_4.4.70-BPI-R2-Kernel_xhci-hcd
+E:ID_VENDOR_ENC=Linux\x204.4.70-BPI-R2-Kernel\x20xhci-hcd
+E:ID_VENDOR_ID=1d6b
+E:ID_MODEL=xHCI_Host_Controller
+E:ID_MODEL_ENC=xHCI\x20Host\x20Controller
+E:ID_MODEL_ID=0002
+E:ID_REVISION=0404
+E:ID_SERIAL=Linux_4.4.70-BPI-R2-Kernel_xhci-hcd_xHCI_Host_Controller_1a1c0000.usb
+E:ID_SERIAL_SHORT=1a1c0000.usb
+E:ID_BUS=usb
+E:ID_USB_INTERFACES=:090000:
+E:ID_VENDOR_FROM_DATABASE=Linux Foundation
+E:ID_MODEL_FROM_DATABASE=2.0 root hub
+E:ID_PATH=platform-1a1c0000.usb
+E:ID_PATH_TAG=platform-1a1c0000_usb
+E:ID_FOR_SEAT=usb-platform-1a1c0000_usb
+G:seat

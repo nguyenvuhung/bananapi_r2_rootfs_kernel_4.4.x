@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: gufw
+Version: 16.04.1
+Summary: An easy, intuitive, way to manage your Linux firewall. It supports common tasks such as allowing or blocking pre-configured, common p2p, or individual ports port(s), and many others!
+Home-page: http://gufw.org
+Author: Marcos Alvarez Costales https://launchpad.net/~costales
+Author-email: https://launchpad.net/~costales
+License: GPL3
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires: gi.repository.GLib
+Requires: gi.repository.Gdk
+Requires: gi.repository.Gtk
+Requires: gi.repository.WebKit
+Provides: gufw

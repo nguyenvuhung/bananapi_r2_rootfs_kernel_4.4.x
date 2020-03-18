@@ -1,0 +1,88 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          bluemon
+# Required-Start:    bluetooth
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 6
+# Short-Description: Bluetooth monitoring daemon
+# Description:       Debian init script for bluemon
+### END INIT INFO
+#
+# Author:   Matthew Johnson <debian@matthew.ath.cx>
+#
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/sbin/bluemon
+NAME=bluemon
+DESC=bluemon
+
+test -x $DAEMON || exit 0
+. /lib/lsb/init-functions
+
+# Include bluemon defaults if available
+if [ -f /etc/default/$NAME ] ; then
+	. /etc/default/$NAME
+elif [ -f /etc/$NAME.conf ] ; then
+	. /etc/$NAME.conf
+elif [ -f /etc/$NAME/$NAME.conf ] ; then
+	. /etc/$NAME/$NAME.conf
+fi
+
+BTIDS=""
+for i in $BLUETOOTHID;
+do
+   BTIDS="$BTIDS -b $i"
+done
+
+case "$1" in
+  start)
+   log_action_begin_msg "Starting $DESC"
+	if [ "$BLUEMON_ENABLE" != "yes" ]; then
+		echo "disabled in /etc/default/bluemon"
+		exit 0
+	fi
+	start-stop-daemon --start --quiet --pidfile /var/run/$NAME.pid \
+		--exec $DAEMON -- -t $THRESHOLD $BTIDS -i $INTERVAL $STDOUT $NOFORK $VERBOSE $DISCONNECTHACK $QUALITY
+   log_action_end_msg $?
+	;;
+  stop)
+   log_action_begin_msg "Stopping $DESC"
+	start-stop-daemon --stop --quiet --pidfile /var/run/$NAME.pid \
+		--oknodo --exec $DAEMON 
+   log_action_end_msg $?
+	;;
+  #reload)
+	#
+	#	If the daemon can reload its config files on the fly
+	#	for example by sending it SIGHUP, do it here.
+	#
+	#	If the daemon responds to changes in its config file
+	#	directly anyway, make this a do-nothing entry.
+	#
+	# echo "Reloading $DESC configuration files."
+	# start-stop-daemon --stop --signal 1 --quiet --pidfile \
+	#	/var/run/$NAME.pid --exec $DAEMON
+  #;;
+  restart|force-reload)
+	#
+	#	If the "reload" option is implemented, move the "force-reload"
+	#	option to the "reload" entry above. If not, "force-reload" is
+	#	just the same as "restart".
+	#
+   log_action_begin_msg "Restarting $DESC"
+	start-stop-daemon --stop --quiet --pidfile /var/run/$NAME.pid \
+		--oknodo --exec $DAEMON
+	start-stop-daemon --start --quiet --pidfile \
+		/var/run/$NAME.pid --exec $DAEMON -- -t $THRESHOLD $BTIDS -i $INTERVAL $STDOUT $NOFORK $DISCONNECTHACK $QUALITY
+   log_action_end_msg $?
+	;;
+  *)
+	N=/etc/init.d/$NAME
+	# echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+	echo "Usage: $N {start|stop|restart|force-reload}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

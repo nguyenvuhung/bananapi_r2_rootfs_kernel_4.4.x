@@ -1,0 +1,13 @@
+TARGETS = rng-tools bpi-init unattended-upgrades tlp uuidd xrdp kerneloops resolvconf pcscd fake-hwclock speech-dispatcher hddtemp irqbalance alsa-utils atd ntp ufw whoopsie lightdm docker bluetooth avahi-dnsconfd bluemon cups-browsed saned cups urandom cgroupfs-mount avahi-daemon plymouth sendsigs rsyslog umountnfs.sh hwclock.sh rpcbind networking umountfs umountroot halt reboot
+cgroupfs-mount: docker
+avahi-daemon: avahi-dnsconfd cups-browsed saned
+sendsigs: avahi-daemon plymouth kerneloops rng-tools pcscd avahi-dnsconfd unattended-upgrades lightdm tlp docker speech-dispatcher bluetooth uuidd cups-browsed hddtemp irqbalance xrdp alsa-utils cgroupfs-mount atd
+rsyslog: avahi-daemon kerneloops sendsigs rng-tools pcscd avahi-dnsconfd docker speech-dispatcher bluetooth cups-browsed hddtemp irqbalance cgroupfs-mount atd ntp saned cups whoopsie
+umountnfs.sh: sendsigs avahi-daemon plymouth kerneloops rsyslog rng-tools pcscd avahi-dnsconfd unattended-upgrades lightdm tlp docker speech-dispatcher bluetooth uuidd cups-browsed hddtemp irqbalance xrdp alsa-utils cgroupfs-mount atd
+hwclock.sh: kerneloops rsyslog uuidd cups-browsed atd
+rpcbind: umountnfs.sh
+networking: kerneloops umountnfs.sh lightdm cups-browsed hddtemp xrdp rpcbind
+umountfs: avahi-daemon plymouth kerneloops resolvconf rng-tools umountnfs.sh pcscd avahi-dnsconfd unattended-upgrades lightdm tlp docker hwclock.sh speech-dispatcher urandom bluetooth uuidd cups-browsed hddtemp networking irqbalance xrdp alsa-utils cgroupfs-mount atd rpcbind
+umountroot: umountfs fake-hwclock
+halt: umountroot
+reboot: umountroot

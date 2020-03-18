@@ -1,0 +1,140 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libtopmenu-gtk
+Upstream-Contact: Javier S. Pedro <maemo@javispedro.com>
+Source: https://git.javispedro.com/cgit/topmenu-gtk.git/
+
+Files: libtopmenu-client/topmenu-appmenubar.c
+ libtopmenu-client/topmenu-appmenubar.h
+ libtopmenu-client/topmenu-client.c
+ libtopmenu-client/topmenu-client.h
+ libtopmenu-client/topmenu-monitor.c
+ libtopmenu-client/topmenu-monitor.h
+ libtopmenu-server/topmenu-server.c
+ libtopmenu-server/topmenu-server.h
+ libtopmenu-server/topmenu-widget.c
+ libtopmenu-server/topmenu-widget.h
+ mate-applet/main.c
+ mate-applet/topmenu-mate-panel-applet.c
+ mate-applet/topmenu-mate-panel-applet.h
+ module/appmenu.c
+ module/appmenu.h
+ module/data.c
+ module/data.h
+ module/menuitem-proxy.h
+ test/client.c
+ test/server.c
+ xfce-applet/topmenu-xfce-panel-applet.c
+ xfce-applet/topmenu-xfce-panel-applet.h
+Copyright: 2014, Javier S. Pedro <maemo@javispedro.com>
+License: LGPL-3+
+
+Files: global.h
+ libtopmenu-client/topmenu-menubar-proxy.h
+Copyright: 2014, Javier S. Pedro <maemo@javispedro.com>
+License: LGPL-3+
+Comment:
+ Assuming license as found in COPYING.LESSER file.
+ Assuming main copyright holder.
+
+Files: module/gtk3privates.h
+Copyright: 1995-1997, Peter Mattis, Spencer Kimball and Josh MacDonald
+License: LGPL-2+
+
+Files: module/main.c
+Copyright: 2012, Canonical Ltd
+  2014, Javier S. Pedro <maemo@javispedro.com>
+License: LGPL-3
+
+Files: lxpanel-plugin/topmenu-lxpanel-plugin.c
+Copyright: 2015, Charles E. Lehner <cel@celehner.com>
+License: LGPL-3+
+
+Files: module/menuitem-proxy.c
+Copyright: 1995-1997, Peter Mattis, Spencer Kimball and Josh MacDonald
+  2014, Javier S. Pedro <maemo@javispedro.com>
+License: LGPL-3+
+
+Files:
+ COPYING
+ COPYING.LESSER
+ ChangeLog
+ Makefile.am
+ README.md
+ config.h.in
+ configure.ac
+ icons/48x48/topmenu-applet.png
+ icons/Makefile.am
+ libtopmenu-client/Makefile.am
+ libtopmenu-server/Makefile.am
+ lxpanel-plugin/Makefile.am
+ mate-applet/Makefile.am
+ mate-applet/com.javispedro.topmenu.MatePanelApplet.mate-panel-applet.in
+ mate-applet/org.mate.panel.applet.TopMenuMatePanelAppletFactory.service.in
+ module/Makefile.am
+ test/Makefile.am
+ xfce-applet/Makefile.am
+ xfce-applet/topmenu.desktop.in
+Copyright: 2014, Javier S. Pedro <maemo@javispedro.com>
+License: LGPL-3+
+Comment:
+ Assuming same license and copyright holder as found
+ with the majority of upstream files.
+
+Files: debian/*
+Copyright: 2014-2016, Alin Andrei <webupd8@gmail.com>
+           2016, Mike Gabriel <sunweaver@debian.org>
+License: LGPL-2+
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Library General
+ Public License version 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+License: LGPL-3
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; exactly
+ version 3 of the License.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Library General
+ Public License version 3 can be found in "/usr/share/common-licenses/LGPL-3".
+
+License: LGPL-3+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 3 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Library General
+ Public License version 3 can be found in "/usr/share/common-licenses/LGPL-3".

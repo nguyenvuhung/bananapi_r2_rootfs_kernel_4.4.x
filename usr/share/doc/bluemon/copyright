@@ -1,0 +1,19 @@
+This package was debianized by Matthew Johnson <debian@matthew.ath.cx> on Tue,
+9 Nov 2004 13:28:09 +0000.
+
+It was downloaded from http://www.matthew.ath.cx/projects/bluemon
+
+Copyright:
+
+Upstream Author: Matthew Johnson <debian@matthew.ath.cx>
+
+This software is copyright (c) 2004-2006 by Matthew Johnson.
+
+You are free to distribute this software under the terms of the GNU General
+Public License version 2.  On Debian systems, the complete text of the GNU
+General Public License can be found in the file
+`/usr/share/common-licenses/GPL-2'.
+
+The packaging is copyright (c) 2004-2007 Matthew Johnson
+<debian@matthew.ath.cx> and is also licensed under the terms of the GNU General
+Public License version 2.

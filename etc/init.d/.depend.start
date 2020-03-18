@@ -1,0 +1,30 @@
+TARGETS = rsyslog bpi-init unattended-upgrades tlp uuidd xrdp killprocs apport dbus kerneloops pcscd cgroupfs-mount speech-dispatcher hddtemp irqbalance atd single ntp whoopsie ssh cron dphys-swapfile rsync anacron avahi-daemon lightdm docker bluetooth avahi-dnsconfd bluemon cups-browsed saned cups plymouth ondemand rc.local
+INTERACTIVE =
+dbus: rsyslog
+kerneloops: rsyslog
+pcscd: rsyslog
+cgroupfs-mount: rsyslog
+speech-dispatcher: rsyslog
+hddtemp: rsyslog
+irqbalance: rsyslog
+atd: rsyslog
+single: killprocs
+ntp: rsyslog
+whoopsie: rsyslog
+ssh: rsyslog
+cron: rsyslog
+dphys-swapfile: rsyslog
+rsync: rsyslog
+anacron: rsyslog
+avahi-daemon: dbus rsyslog
+lightdm: dbus
+docker: rsyslog cgroupfs-mount
+bluetooth: rsyslog dbus
+avahi-dnsconfd: rsyslog
+bluemon: bluetooth
+cups-browsed: rsyslog
+saned: rsyslog dbus
+cups: rsyslog
+plymouth: avahi-daemon dbus rsyslog kerneloops pcscd bpi-init avahi-dnsconfd unattended-upgrades lightdm tlp docker cgroupfs-mount speech-dispatcher bluemon bluetooth uuidd cups-browsed hddtemp irqbalance xrdp atd ntp saned cups whoopsie apport ssh cron dphys-swapfile rsync anacron
+ondemand: avahi-daemon dbus rsyslog kerneloops pcscd bpi-init avahi-dnsconfd unattended-upgrades lightdm tlp docker cgroupfs-mount speech-dispatcher bluemon bluetooth uuidd cups-browsed hddtemp irqbalance xrdp atd ntp saned cups whoopsie apport ssh cron dphys-swapfile rsync anacron
+rc.local: avahi-daemon dbus rsyslog kerneloops pcscd bpi-init avahi-dnsconfd unattended-upgrades lightdm tlp docker cgroupfs-mount speech-dispatcher bluemon bluetooth uuidd cups-browsed hddtemp irqbalance xrdp atd ntp saned cups whoopsie apport ssh cron dphys-swapfile rsync anacron

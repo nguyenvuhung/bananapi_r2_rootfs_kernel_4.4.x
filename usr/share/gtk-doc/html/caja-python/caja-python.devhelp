@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="caja-python Reference Manual" link="index.html" author="Adam Plumb" name="caja-python" language="python">
+  <chapters>
+    <sub name="Overview" link="caja-python-overview.html">
+      <sub name="A Simple Extension" link="caja-python-overview-example.html"/>
+      <sub name="Explanation of Passive/Active Methods" link="caja-python-overview-methods.html"/>
+    </sub>
+    <sub name="Available Classes" link="caja-python-class-reference.html">
+      <sub name="Caja.Column" link="class-caja-python-column.html"/>
+      <sub name="Caja.FileInfo" link="class-caja-python-file-info.html"/>
+      <sub name="Caja.Menu" link="class-caja-python-menu.html"/>
+      <sub name="Caja.MenuItem" link="class-caja-python-menu-item.html"/>
+      <sub name="Caja.PropertyPage" link="class-caja-python-property-page.html"/>
+    </sub>
+    <sub name="Provider Interfaces" link="caja-python-provider-reference.html">
+      <sub name="Caja.ColumnProvider" link="class-caja-python-column-provider.html"/>
+      <sub name="Caja.InfoProvider" link="class-caja-python-info-provider.html"/>
+      <sub name="Caja.LocationWidgetProvider" link="class-caja-python-location-widget-provider.html"/>
+      <sub name="Caja.MenuProvider" link="class-caja-python-menu-provider.html"/>
+      <sub name="Caja.PropertyPageProvider" link="class-caja-python-property-page-provider.html"/>
+    </sub>
+    <sub name="Available Enums" link="caja-python-enum-reference.html">
+      <sub name="Caja.OperationResult" link="enum-caja-python-operation-result.html"/>
+    </sub>
+  </chapters>
+  <functions>
+    <function name="Caja.Column" link="class-caja-python-column.html#constructor-caja-column"/>
+    <function name="Caja.Menu" link="class-caja-python-menu.html#constructor-caja-menu"/>
+    <function name="Caja.MenuItem" link="class-caja-python-menu-item.html#constructor-caja-menu-item"/>
+    <function name="Caja.PropertyPage" link="class-caja-python-property-page.html#constructor-caja-property-page"/>
+    <function name="Caja.FileInfo.is_gone" link="class-caja-python-file-info.html#method-caja-python-file-info--is-gone"/>
+    <function name="Caja.FileInfo.get_file_type" link="class-caja-python-file-info.html#method-caja-python-file-info--get-file-type"/>
+    <function name="Caja.FileInfo.get_location" link="class-caja-python-file-info.html#method-caja-python-file-info--get-location"/>
+    <function name="Caja.FileInfo.get_name" link="class-caja-python-file-info.html#method-caja-python-file-info--get-name"/>
+    <function name="Caja.FileInfo.get_uri" link="class-caja-python-file-info.html#method-caja-python-file-info--get-uri"/>
+    <function name="Caja.FileInfo.get_activation_uri" link="class-caja-python-file-info.html#method-caja-python-file-info--get-activation-uri"/>
+    <function name="Caja.FileInfo.get_parent_info" link="class-caja-python-file-info.html#method-caja-python-file-info--get-parent-info"/>
+    <function name="Caja.FileInfo.get_parent_location" link="class-caja-python-file-info.html#method-caja-python-file-info--get-parent-location"/>
+    <function name="Caja.FileInfo.get_parent_uri" link="class-caja-python-file-info.html#method-caja-python-file-info--get-parent-uri"/>
+    <function name="Caja.FileInfo.get_mount" link="class-caja-python-file-info.html#method-caja-python-file-info--get-mount"/>
+    <function name="Caja.FileInfo.get_uri_scheme" link="class-caja-python-file-info.html#method-caja-python-file-info--get-uri-scheme"/>
+    <function name="Caja.FileInfo.get_mime_type" link="class-caja-python-file-info.html#method-caja-python-file-info--get-mime-type"/>
+    <function name="Caja.FileInfo.is_mime_type" link="class-caja-python-file-info.html#method-caja-python-file-info--is-mime-type"/>
+    <function name="Caja.FileInfo.is_directory" link="class-caja-python-file-info.html#method-caja-python-file-info--is-directory"/>
+    <function name="Caja.FileInfo.can_write" link="class-caja-python-file-info.html#method-caja-python-file-info--can-write"/>
+    <function name="Caja.FileInfo.add_emblem" link="class-caja-python-file-info.html#method-caja-python-file-info--add-emblem"/>
+    <function name="Caja.FileInfo.get_string_attribute" link="class-caja-python-file-info.html#method-caja-python-file-info--get-string-attribute"/>
+    <function name="Caja.FileInfo.add_string_attribute" link="class-caja-python-file-info.html#method-caja-python-file-info--add-string-attribute"/>
+    <function name="Caja.FileInfo.invalidate_extension_info" link="class-caja-python-file-info.html#method-caja-python-file-info--invalidate-extension-info"/>
+    <function name="Caja.Menu.append_item" link="class-caja-python-menu.html#method-caja-python-menu--append_item"/>
+    <function name="Caja.Menu.get_items" link="class-caja-python-menu.html#method-caja-python-menu--get_items"/>
+    <function name="Caja.MenuItem.activate" link="class-caja-python-menu-item.html#method-caja-python-menu-item--activate"/>
+    <function name="Caja.MenuItem.set_submenu" link="class-caja-python-menu-item.html#method-caja-python-menu-item--set_submenu"/>
+    <function name="The &quot;activate&quot; Caja.MenuItem Signal" link="class-caja-python-menu-item.html#signal-caja-python-menu-item--activate"/>
+    <function name="Caja.ColumnProvider.get_columns" link="class-caja-python-column-provider.html#method-caja-column-provider--get-columns"/>
+    <function name="Caja.InfoProvider.update_file_info" link="class-caja-python-info-provider.html#method-caja-python-info-provider--update-file-info"/>
+    <function name="Caja.InfoProvider.update_file_info_full" link="class-caja-python-info-provider.html#method-caja-python-info-provider--update-file-info-full"/>
+    <function name="Caja.InfoProvider.cancel_update" link="class-caja-python-info-provider.html#method-caja-python-info-provider--cancel-update"/>
+    <function name="Caja.info_provider_update_complete_invoke" link="class-caja-python-info-provider.html#method-caja-python-info-provider--update-complete-invoke"/>
+    <function name="Caja.LocationWidgetProvider.get_widget" link="class-caja-python-location-widget-provider.html#method-caja-location-widget-provider--get-widget"/>
+    <function name="Caja.MenuProvider.get_file_items" link="class-caja-python-menu-provider.html#method-caja-python-menu-provider--get-file-items"/>
+    <function name="Caja.MenuProvider.get_file_items_full" link="class-caja-python-menu-provider.html#method-caja-python-menu-provider--get-file-items-full"/>
+    <function name="Caja.MenuProvider.get_background_items" link="class-caja-python-menu-provider.html#method-caja-python-menu-provider--get-background-items"/>
+    <function name="Caja.MenuProvider.get_background_items_full" link="class-caja-python-menu-provider.html#method-caja-python-menu-provider--get-background-items-full"/>
+    <function name="Caja.menu_provider_emit_items_updated_signal" link="class-caja-python-menu-provider.html#method-caja-python-menu-provider--emit-items-updated-signal"/>
+    <function name="The &quot;items-updated&quot; Caja.MenuProvider Signal" link="class-caja-python-menu-provider.html#signal-caja-python-menu-provider--items-updated"/>
+    <function name="Caja.PropertyPageProvider.get_pages" link="class-caja-python-property-page-provider.html#method-caja-property-page-provider--get-pages"/>
+  </functions>
+</book>

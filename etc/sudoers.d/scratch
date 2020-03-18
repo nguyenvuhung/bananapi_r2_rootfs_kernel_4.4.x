@@ -1,0 +1,3 @@
+# Allow members of group gpio to execute scratch and sqweak
+%gpio ALL=NOPASSWD: /usr/bin/scratch
+%gpio ALL=NOPASSWD: /usr/bin/squeak

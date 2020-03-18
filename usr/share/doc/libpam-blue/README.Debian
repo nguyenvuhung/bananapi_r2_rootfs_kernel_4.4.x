@@ -1,0 +1,7 @@
+To active this module remember first: edit /etc/security/bluesscan.conf, 
+if you don't know or don't remember any field, you can execute 
+"hcitool scan" for get more info about your(s) bluetooth devices,
+and second: edit /etc/pam.d/common-auth and line before pam_unix.so put
+something like this   "auth  	 sufficient	  pam_blue.so" 
+
+-- Carlos Alberto Silombria Ibarra <silverdog at gmail.com>

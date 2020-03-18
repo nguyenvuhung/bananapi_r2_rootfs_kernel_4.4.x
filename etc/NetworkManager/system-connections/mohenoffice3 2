@@ -1,0 +1,23 @@
+[connection]
+id=mohenoffice3 2
+uuid=bdc8ef8a-505f-42b3-91aa-edbd17cd9007
+type=wifi
+permissions=user:pi:;
+secondaries=
+
+[wifi]
+mac-address=00:08:22:3E:B7:FB
+mac-address-blacklist=
+mac-address-randomization=0
+mode=infrastructure
+seen-bssids=
+ssid=mohenoffice3
+
+[ipv4]
+dns-search=
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=
+method=auto

@@ -1,0 +1,7 @@
+[org.gnome.desktop.file-sharing]
+
+enabled = /desktop/gnome/file_sharing/enabled
+require-password = /desktop/gnome/file_sharing/require_password
+bluetooth-obexpush-enabled = /desktop/gnome/file_sharing/bluetooth_obexpush_enabled
+bluetooth-accept-files = /desktop/gnome/file_sharing/bluetooth_accept_files
+bluetooth-notify = /desktop/gnome/file_sharing/bluetooth_notify

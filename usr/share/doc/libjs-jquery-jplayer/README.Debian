@@ -1,0 +1,13 @@
+jPlayer for Debian
+------------------
+
+In order to make use of jPlayer in your HTML, include the following
+lines in your html header:
+
+       <script language="javascript" type="text/javascript"
+       src="/javascript/jquery/jquery.js"></script>
+
+       <script language="javascript" type="text/javascript"
+       src="/javascript/jquery-jplayer/jquery.jplayer.js"></script>
+
+ -- Pau Garcia i Quiles <pgquiles@elpauer.org>  Sun, 13 May 2012 12:59:11 +0200

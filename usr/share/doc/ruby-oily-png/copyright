@@ -1,0 +1,69 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: OilyPNG
+Upstream-Contact: Willem van Bergen <willem@railsdoctors.com>
+ http://github.com/wvanbergen/oily_png/issues/
+Source: http://github.com/wvanbergen/oily_png/downloads
+ git://github.com/wvanbergen/oily_png
+
+Files: *
+Copyright: 2010, Willem van Bergen <willem@railsdoctors.com>
+License: Expat
+
+Files: spec/resources/bas*.png
+ spec/resources/s0*.png
+ spec/resources/s3*.png
+ spec/resources/s4*.png
+ spec/resources/tb*.png
+ spec/resources/tp*.png
+Copyright: 1996,2011, Willem van Schaik
+License: other~PngSuite
+Comment:
+ Licensing information is missing, but is assumed to be same as
+ published at <http://www.schaik.com/pngsuite2011/PngSuite.LICENSE>.
+
+Files: debian/*
+Copyright: 2011-2014, Jonas Smedegaard <dr@jones.dk>
+License: GPL-3+
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: other~PngSuite
+ Permission to use, copy, modify and distribute these images for any
+ purpose and without fee is hereby granted.
+
+License: GPL-3+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the
+ Free Software Foundation; either version 3, or (at your option) any
+ later version.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ Comment:
+ .
+ On Debian systems the 'GNU General Public License' version 3 is located
+ in '/usr/share/common-licenses/GPL-3'.
+ .
+ You should have received a copy of the 'GNU General Public License'
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.

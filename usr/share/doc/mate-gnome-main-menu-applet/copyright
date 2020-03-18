@@ -1,0 +1,138 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: gnome-main-menu
+Upstream-Contact: Stefano Karapetsas <stefano@karapetsas.com>
+Source: http://git.mate-desktop.org/gnome-main-menu/
+
+Files: application-browser/src/application-browser.c
+       caja-main-menu/caja-main-menu.c
+       main-menu/src/hard-drive-status-tile.c
+       main-menu/src/hard-drive-status-tile.h
+       main-menu/src/main-menu-ui.c
+       main-menu/src/main-menu-ui.h
+       main-menu/src/main-menu.c
+       main-menu/src/network-status-agent.c
+       main-menu/src/network-status-agent.h
+       main-menu/src/network-status-info.c
+       main-menu/src/network-status-info.h
+       main-menu/src/network-status-tile.c
+       main-menu/src/network-status-tile.h
+       main-menu/src/tile-table.c
+       main-menu/src/tile-table.h
+       main-menu/src/tomboykeybinder.c
+       main-menu/src/tomboykeybinder.h
+Copyright: 2006-2007, Novell, Inc.
+License: GPL-2+
+
+Files: caja-main-menu/caja-main-menu.h
+       caja-main-menu/main-menu.c
+Copyright: 2004-2005, Free Software Foundation, Inc.
+License: GPL-2+
+
+Files: main-menu/src/eggaccelerators.h
+Copyright: 2002, Red Hat, Inc.
+           2006, Novell, Inc.
+License: LGPL-2+
+
+Files: main-menu/src/eggaccelerators.c
+Copyright: 1998-2001, Tim Janik
+           2002, Red Hat, Inc.
+           2006, Novell, Inc.
+License: LGPL-2+
+
+Files: application-browser/etc/.cvsignore
+       application-browser/etc/Makefile.am
+       application-browser/etc/*.1
+       application-browser/etc/*.in
+       application-browser/src/.cvsignore
+       application-browser/src/Makefile.am
+       caja-main-menu/.cvsignore
+       caja-main-menu/Makefile.am
+       main-menu/etc/.cvsignore
+       main-menu/etc/Makefile.am
+       main-menu/etc/*.xbel
+       main-menu/etc/*.ots
+       main-menu/etc/*.ott
+       main-menu/etc/*.desktop
+       main-menu/etc/*.in
+       main-menu/etc/*.xml
+       main-menu/src/.cvsignore
+       main-menu/src/Makefile.am
+       main-menu/src/*.ui
+       main-menu/src/trigger-panel-run-dialog.c
+       patch/*
+       po/.cvsignore
+       po/LINGUAS
+       po/POTFILES.*
+       .cvsignore
+       AUTHORS
+       COPYING
+       ChangeLog
+       INSTALL
+       MAINTAINERS
+       Makefile.am
+       NEWS
+       README
+       autogen.sh
+       configure.ac
+       gnome-main-menu.doap
+Copyright: *No copyright*
+License: GPL-2+
+Comment:
+ Using license from COPYING file.
+
+Files: po/*.po
+       po/ChangeLog
+Copyright: THE PACKAGE'S COPYRIGHT HOLDER
+           1999-2001, SuSE GmbH
+           2001-2013, Free Software Foundation, Inc.
+           2002-2003, SuSE Linux AG.
+           2004, Zuza Software Foundation
+           2005, Immunix, Inc.
+           2005-2007, SUSE Linux Products GmbH.
+           2006-2007, SUSE Linux GmbH, Nuremberg
+           2007, tasty burritos
+           2008, GNOME i18n Project for Vietnamese
+           2009, The GNOME Foundation
+License: GPL-2+
+Comment:
+ Using license from COPYING file.
+
+Files: debian/*
+Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
+           2014, Mike Gabriel <sunweaver@debian.org>
+License: GPL-2+ or LGPL-2+
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU Genaral Public License for more details.
+ .
+ You should have received a copy og the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version LGPL-2 can be found in "/usr/share/common-licenses/LGPL-2".

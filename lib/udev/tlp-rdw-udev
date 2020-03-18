@@ -1,0 +1,101 @@
+#!/bin/sh
+# tlp-rdw - handle dock/undock events
+#
+# Copyright (c) 2015 Thomas Koch <linrunner at gmx.net>
+# This software is licensed under the GPL v2 or later.
+
+# --- Constants
+readonly LIBDIRS="/usr/lib/tlp-pm /usr/lib64/tlp-pm"
+readonly LIBS="tlp-functions tlp-rf-func"
+
+readonly RDW_DOCK_LOCK="rdw_dock_lock"
+readonly RDW_DOCK_LOCKTIME=2
+
+# --- Locate and source libraries
+for libdir in $LIBDIRS; do [ -d $libdir ] && break; done
+[ -d $libdir ] || exit 0
+
+for lib in $LIBS; do
+    [ -f $libdir/$lib ] || exit 0
+    . $libdir/$lib
+done
+
+# --- MAIN
+read_defaults
+check_tlp_enabled || exit 0
+add_sbin2path
+
+# get power state
+get_power_state; onbat=$?
+
+# get device/type
+ddev=/sys$1
+devtype=$2
+
+case $devtype in
+    dock)
+        # check if type is "dock_station", exit if not
+        type=$(cat $ddev/type)
+        [ "$type" = "dock_station" ] || exit 0
+
+        docked=$(cat $ddev/docked)
+        action=$EVENT
+
+        echo_debug "udev" "rdw_udev($devtype).$action dev=$ddev type=$type docked=$docked onbat=$onbat"
+        ;;
+
+    usb_dock)
+        case $ACTION in
+            add)    action="dock"  ;;
+            remove) action="undock"  ;;
+        esac
+
+        echo_debug "udev" "rdw_udev($devtype).$action dev=$ddev onbat=$onbat"
+        ;;
+
+    *) exit 0 ;; # unknown device type
+esac
+
+# quit if timed lock in progress
+if check_timed_lock $RDW_DOCK_LOCK ; then
+    echo_debug "udev" "rdw_udev.locked"
+    exit 0
+fi
+
+case $action in
+    dock) # laptop was docked
+
+        # lock for 2 seconds in case dock has multiple devices
+        set_timed_lock $RDW_DOCK_LOCK $RDW_DOCK_LOCKTIME
+
+        # enable configured radios
+        for dev in $DEVICES_TO_ENABLE_ON_DOCK; do
+            [ -n "$dev" ] && device_switch $dev on
+        done
+
+        # disable configured radios
+        for dev in $DEVICES_TO_DISABLE_ON_DOCK; do
+            [ -n "$dev" ] && device_switch $dev off
+        done
+        ;;
+
+    undock) # laptop was undocked
+
+        # lock for 2 seconds in case dock has multiple devices
+        set_timed_lock $RDW_DOCK_LOCK $RDW_DOCK_LOCKTIME
+
+        # enable configured radios
+        for dev in $DEVICES_TO_ENABLE_ON_UNDOCK; do
+            [ -n "$dev" ] && device_switch $dev on
+        done
+
+        # disable configured radios
+        for dev in $DEVICES_TO_DISABLE_ON_UNDOCK; do
+            [ -n "$dev" ] && device_switch $dev off
+        done
+        ;;
+
+    *) ;; # unknown action -> do nothing
+esac
+
+exit 0

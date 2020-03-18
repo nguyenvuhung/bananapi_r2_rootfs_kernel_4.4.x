@@ -1,0 +1,18 @@
+# This is private data. Do not parse.
+UID=1000
+USER=pi
+ACTIVE=1
+STATE=active
+REMOTE=0
+TYPE=x11
+CLASS=user
+SCOPE=session-c1.scope
+FIFO=/run/systemd/sessions/c1.ref
+SEAT=seat0
+DISPLAY=:0
+SERVICE=lightdm-autologin
+DESKTOP=mate
+VTNR=7
+LEADER=1015
+REALTIME=1522312121330730
+MONOTONIC=21987381

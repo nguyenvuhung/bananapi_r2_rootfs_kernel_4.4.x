@@ -1,0 +1,6 @@
+I:12654843
+E:ID_MM_CANDIDATE=1
+E:ID_NET_DRIVER=bonding
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/bond0
+G:systemd

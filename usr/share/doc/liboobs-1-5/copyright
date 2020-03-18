@@ -1,0 +1,54 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: liboobs
+Source: http://ftp.gnome.org/pub/GNOME/sources/liboobs/
+
+Files: *
+Copyright: 2004-2005 Carlos Garnacho <carlosg@gnome.org>
+           2009-2010 Milan Bouchet-Valat <nalimilan@club.fr>
+License: LGPL-2+
+
+Files: oobs/oobs-iface-ppp.* oobs/oobs-iface-plip.*
+Copyright: 2004 Carlos Garnacho
+License: GPL-2+
+
+Files: debian/*
+Copyright:
+    This package was debianized by Daniel Holbach <daniel.holbach@ubuntu.com> on
+    Mon, 12 Jun 2006 16:37:16 +0200 and adapted for Debian by
+    Loic Minier <lool@dooz.org> on Mon, 19 Feb 2007 15:37:29 +0100
+License: GPL-2+
+
+License: GPL-2+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ The complete text of the GNU General Public License
+ can be found in /usr/share/common-licenses/GPL-2 file.
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ The complete text of the GNU Lesser General Public License
+ can be found in /usr/share/common-licenses/LGPL-2 file.

@@ -1,0 +1,5 @@
+I:12715243
+E:ID_MM_CANDIDATE=1
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/tunl0
+G:systemd

@@ -1,0 +1,13 @@
+[Unit]
+Description=Bluetooth init for Touch devices
+Before=bluetooth.service
+ConditionFileIsExecutable=/usr/bin/getprop
+
+[Service]
+# Set Type=forking even for oneshot scripts as some are forking.
+# This enables to have pre-start always to be executed before bluetooth.service
+Type=forking
+ExecStart=/bin/sh -ec 'SCRIPT=/usr/share/bluetooth-touch/`getprop ro.product.device`; [ \( ! -x $SCRIPT \) -o \( ! -f $SCRIPT \) ] || exec $SCRIPT'
+
+[Install]
+WantedBy=bluetooth.target

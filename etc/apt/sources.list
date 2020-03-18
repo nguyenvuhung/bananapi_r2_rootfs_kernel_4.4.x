@@ -1,0 +1,13 @@
+deb http://ports.ubuntu.com/ xenial main restricted universe multiverse
+deb-src http://ports.ubuntu.com/ xenial main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ xenial-updates main restricted universe multiverse
+deb-src http://ports.ubuntu.com/ xenial-updates main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ xenial-security main restricted universe multiverse
+deb-src http://ports.ubuntu.com/ xenial-security main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ xenial-backports main restricted universe multiverse
+deb-src http://ports.ubuntu.com/ xenial-backports main restricted universe multiverse
+deb [arch=armhf] https://download.docker.com/linux/ubuntu xenial stable
+# deb-src [arch=armhf] https://download.docker.com/linux/ubuntu xenial stable

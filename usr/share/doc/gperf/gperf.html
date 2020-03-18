@@ -1,0 +1,2493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Perfect Hash Function Generator</title>
+
+<meta name="description" content="Perfect Hash Function Generator">
+<meta name="keywords" content="Perfect Hash Function Generator">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#Concept-Index" rel="index" title="Concept Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">Perfect Hash Function Generator</h1>
+
+
+
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-GNU-GENERAL-PUBLIC-LICENSE" href="#Copying">GNU GENERAL PUBLIC LICENSE</a></li>
+  <li><a name="toc-Contributors-to-GNU-gperf-Utility" href="#Contributors">Contributors to GNU <code>gperf</code> Utility</a></li>
+  <li><a name="toc-Introduction-1" href="#Motivation">1 Introduction</a></li>
+  <li><a name="toc-Static-search-structures-and-GNU-gperf" href="#Search-Structures">2 Static search structures and GNU <code>gperf</code></a></li>
+  <li><a name="toc-High_002dLevel-Description-of-GNU-gperf" href="#Description">3 High-Level Description of GNU <code>gperf</code></a>
+  <ul class="no-bullet">
+    <li><a name="toc-Input-Format-to-gperf" href="#Input-Format">3.1 Input Format to <code>gperf</code></a>
+    <ul class="no-bullet">
+      <li><a name="toc-Declarations-1" href="#Declarations">3.1.1 Declarations</a>
+      <ul class="no-bullet">
+        <li><a name="toc-User_002dsupplied-struct" href="#User_002dsupplied-Struct">3.1.1.1 User-supplied <code>struct</code></a></li>
+        <li><a name="toc-Gperf-Declarations-1" href="#Gperf-Declarations">3.1.1.2 Gperf Declarations</a></li>
+        <li><a name="toc-C-Code-Inclusion-1" href="#C-Code-Inclusion">3.1.1.3 C Code Inclusion</a></li>
+      </ul></li>
+      <li><a name="toc-Format-for-Keyword-Entries" href="#Keywords">3.1.2 Format for Keyword Entries</a></li>
+      <li><a name="toc-Including-Additional-C-Functions" href="#Functions">3.1.3 Including Additional C Functions</a></li>
+      <li><a name="toc-Where-to-place-directives-for-GNU-indent_002e" href="#Controls-for-GNU-indent">3.1.4 Where to place directives for GNU <code>indent</code>.</a></li>
+    </ul></li>
+    <li><a name="toc-Output-Format-for-Generated-C-Code-with-gperf" href="#Output-Format">3.2 Output Format for Generated C Code with <code>gperf</code></a></li>
+    <li><a name="toc-Use-of-NUL-bytes" href="#Binary-Strings">3.3 Use of NUL bytes</a></li>
+    <li><a name="toc-The-Copyright-of-the-Output" href="#Output-Copyright">3.4 The Copyright of the Output</a></li>
+  </ul></li>
+  <li><a name="toc-Invoking-gperf" href="#Options">4 Invoking <code>gperf</code></a>
+  <ul class="no-bullet">
+    <li><a name="toc-Specifying-the-Location-of-the-Output-File" href="#Output-File">4.1 Specifying the Location of the Output File</a></li>
+    <li><a name="toc-Options-that-affect-Interpretation-of-the-Input-File" href="#Input-Details">4.2 Options that affect Interpretation of the Input File</a></li>
+    <li><a name="toc-Options-to-specify-the-Language-for-the-Output-Code" href="#Output-Language">4.3 Options to specify the Language for the Output Code</a></li>
+    <li><a name="toc-Options-for-fine-tuning-Details-in-the-Output-Code" href="#Output-Details">4.4 Options for fine tuning Details in the Output Code</a></li>
+    <li><a name="toc-Options-for-changing-the-Algorithms-employed-by-gperf" href="#Algorithmic-Details">4.5 Options for changing the Algorithms employed by <code>gperf</code></a></li>
+    <li><a name="toc-Informative-Output" href="#Verbosity">4.6 Informative Output</a></li>
+  </ul></li>
+  <li><a name="toc-Known-Bugs-and-Limitations-with-gperf" href="#Bugs">5 Known Bugs and Limitations with <code>gperf</code></a></li>
+  <li><a name="toc-Things-Still-Left-to-Do" href="#Projects">6 Things Still Left to Do</a></li>
+  <li><a name="toc-Bibliography-1" href="#Bibliography">7 Bibliography</a></li>
+  <li><a name="toc-Concept-Index-1" href="#Concept-Index">Concept Index</a></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#Copying" accesskey="n" rel="next">Copying</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Introduction"></a>
+<h1 class="top">Introduction</h1>
+
+<p>This manual documents the GNU <code>gperf</code> perfect hash function generator
+utility, focusing on its features and how to use them, and how to report
+bugs.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Copying" accesskey="1">Copying</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">GNU General Public License says how you can
+                                copy and share <code>gperf</code>.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Contributors" accesskey="2">Contributors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">People who have contributed to <code>gperf</code>.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Motivation" accesskey="3">Motivation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The purpose of <code>gperf</code>.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Search-Structures" accesskey="4">Search Structures</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Static search structures and GNU <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Description" accesskey="5">Description</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">High-level discussion of how GPERF functions.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Options" accesskey="6">Options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A description of options to the program.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bugs" accesskey="7">Bugs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Known bugs and limitations with GPERF.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Projects" accesskey="8">Projects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Things still left to do.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bibliography" accesskey="9">Bibliography</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Material Referenced in this Report.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Concept-Index">Concept Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+High-Level Description of GNU <code>gperf</code>
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Input-Format">Input Format</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Input Format to <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Format">Output Format</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Output Format for Generated C Code with <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Binary-Strings">Binary Strings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Use of NUL bytes
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Copyright">Output Copyright</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The Copyright of the Output.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Input Format to <code>gperf</code>
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Declarations">Declarations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Declarations.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Keywords">Keywords</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Format for Keyword Entries.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Functions">Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Including Additional C Functions.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Controls-for-GNU-indent">Controls for GNU indent</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to place directives for GNU <code>indent</code>.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Declarations
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#User_002dsupplied-Struct">User-supplied Struct</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying keywords with attributes.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Gperf-Declarations">Gperf Declarations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Embedding command line options in the input.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#C-Code-Inclusion">C Code Inclusion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Including C declarations and definitions.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Invoking <code>gperf</code>
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Input-Details">Input Details</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options that affect Interpretation of the Input File
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Language">Output Language</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying the Language for the Output Code
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Details">Output Details</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Fine tuning Details in the Output Code
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Algorithmic-Details">Algorithmic Details</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Changing the Algorithms employed by <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Verbosity">Verbosity</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Informative Output
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr></table>
+
+
+<hr>
+<a name="Copying"></a>
+<div class="header">
+<p>
+Next: <a href="#Contributors" accesskey="n" rel="next">Contributors</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="GNU-GENERAL-PUBLIC-LICENSE"></a>
+<h2 class="unnumbered">GNU GENERAL PUBLIC LICENSE</h2>
+<div align="center">Version 3, 29 June 2007
+</div>
+
+<div class="display">
+<pre class="display">Copyright &copy; 2007 Free Software Foundation, Inc. <a href="http://fsf.org/">http://fsf.org/</a>
+
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
+</pre></div>
+
+<a name="Preamble"></a>
+<h3 class="heading">Preamble</h3>
+
+<p>The GNU General Public License is a free, copyleft license for
+software and other kinds of works.
+</p>
+<p>The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom
+to share and change all versions of a program&mdash;to make sure it remains
+free software for all its users.  We, the Free Software Foundation,
+use the GNU General Public License for most of our software; it
+applies also to any other work released this way by its authors.  You
+can apply it to your programs, too.
+</p>
+<p>When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+them if you wish), that you receive source code or can get it if you
+want it, that you can change the software or use pieces of it in new
+free programs, and that you know you can do these things.
+</p>
+<p>To protect your rights, we need to prevent others from denying you
+these rights or asking you to surrender the rights.  Therefore, you
+have certain responsibilities if you distribute copies of the
+software, or if you modify it: responsibilities to respect the freedom
+of others.
+</p>
+<p>For example, if you distribute copies of such a program, whether
+gratis or for a fee, you must pass on to the recipients the same
+freedoms that you received.  You must make sure that they, too,
+receive or can get the source code.  And you must show them these
+terms so they know their rights.
+</p>
+<p>Developers that use the GNU GPL protect your rights with two steps:
+(1) assert copyright on the software, and (2) offer you this License
+giving you legal permission to copy, distribute and/or modify it.
+</p>
+<p>For the developers&rsquo; and authors&rsquo; protection, the GPL clearly explains
+that there is no warranty for this free software.  For both users&rsquo; and
+authors&rsquo; sake, the GPL requires that modified versions be marked as
+changed, so that their problems will not be attributed erroneously to
+authors of previous versions.
+</p>
+<p>Some devices are designed to deny users access to install or run
+modified versions of the software inside them, although the
+manufacturer can do so.  This is fundamentally incompatible with the
+aim of protecting users&rsquo; freedom to change the software.  The
+systematic pattern of such abuse occurs in the area of products for
+individuals to use, which is precisely where it is most unacceptable.
+Therefore, we have designed this version of the GPL to prohibit the
+practice for those products.  If such problems arise substantially in
+other domains, we stand ready to extend this provision to those
+domains in future versions of the GPL, as needed to protect the
+freedom of users.
+</p>
+<p>Finally, every program is threatened constantly by software patents.
+States should not allow patents to restrict development and use of
+software on general-purpose computers, but in those that do, we wish
+to avoid the special danger that patents applied to a free program
+could make it effectively proprietary.  To prevent this, the GPL
+assures that patents cannot be used to render the program non-free.
+</p>
+<p>The precise terms and conditions for copying, distribution and
+modification follow.
+</p>
+<a name="TERMS-AND-CONDITIONS"></a>
+<h3 class="heading">TERMS AND CONDITIONS</h3>
+
+<ol>
+<li> Definitions.
+
+<p>&ldquo;This License&rdquo; refers to version 3 of the GNU General Public License.
+</p>
+<p>&ldquo;Copyright&rdquo; also means copyright-like laws that apply to other kinds
+of works, such as semiconductor masks.
+</p>
+<p>&ldquo;The Program&rdquo; refers to any copyrightable work licensed under this
+License.  Each licensee is addressed as &ldquo;you&rdquo;.  &ldquo;Licensees&rdquo; and
+&ldquo;recipients&rdquo; may be individuals or organizations.
+</p>
+<p>To &ldquo;modify&rdquo; a work means to copy from or adapt all or part of the work
+in a fashion requiring copyright permission, other than the making of
+an exact copy.  The resulting work is called a &ldquo;modified version&rdquo; of
+the earlier work or a work &ldquo;based on&rdquo; the earlier work.
+</p>
+<p>A &ldquo;covered work&rdquo; means either the unmodified Program or a work based
+on the Program.
+</p>
+<p>To &ldquo;propagate&rdquo; a work means to do anything with it that, without
+permission, would make you directly or secondarily liable for
+infringement under applicable copyright law, except executing it on a
+computer or modifying a private copy.  Propagation includes copying,
+distribution (with or without modification), making available to the
+public, and in some countries other activities as well.
+</p>
+<p>To &ldquo;convey&rdquo; a work means any kind of propagation that enables other
+parties to make or receive copies.  Mere interaction with a user
+through a computer network, with no transfer of a copy, is not
+conveying.
+</p>
+<p>An interactive user interface displays &ldquo;Appropriate Legal Notices&rdquo; to
+the extent that it includes a convenient and prominently visible
+feature that (1) displays an appropriate copyright notice, and (2)
+tells the user that there is no warranty for the work (except to the
+extent that warranties are provided), that licensees may convey the
+work under this License, and how to view a copy of this License.  If
+the interface presents a list of user commands or options, such as a
+menu, a prominent item in the list meets this criterion.
+</p>
+</li><li> Source Code.
+
+<p>The &ldquo;source code&rdquo; for a work means the preferred form of the work for
+making modifications to it.  &ldquo;Object code&rdquo; means any non-source form
+of a work.
+</p>
+<p>A &ldquo;Standard Interface&rdquo; means an interface that either is an official
+standard defined by a recognized standards body, or, in the case of
+interfaces specified for a particular programming language, one that
+is widely used among developers working in that language.
+</p>
+<p>The &ldquo;System Libraries&rdquo; of an executable work include anything, other
+than the work as a whole, that (a) is included in the normal form of
+packaging a Major Component, but which is not part of that Major
+Component, and (b) serves only to enable use of the work with that
+Major Component, or to implement a Standard Interface for which an
+implementation is available to the public in source code form.  A
+&ldquo;Major Component&rdquo;, in this context, means a major essential component
+(kernel, window system, and so on) of the specific operating system
+(if any) on which the executable work runs, or a compiler used to
+produce the work, or an object code interpreter used to run it.
+</p>
+<p>The &ldquo;Corresponding Source&rdquo; for a work in object code form means all
+the source code needed to generate, install, and (for an executable
+work) run the object code and to modify the work, including scripts to
+control those activities.  However, it does not include the work&rsquo;s
+System Libraries, or general-purpose tools or generally available free
+programs which are used unmodified in performing those activities but
+which are not part of the work.  For example, Corresponding Source
+includes interface definition files associated with source files for
+the work, and the source code for shared libraries and dynamically
+linked subprograms that the work is specifically designed to require,
+such as by intimate data communication or control flow between those
+subprograms and other parts of the work.
+</p>
+<p>The Corresponding Source need not include anything that users can
+regenerate automatically from other parts of the Corresponding Source.
+</p>
+<p>The Corresponding Source for a work in source code form is that same
+work.
+</p>
+</li><li> Basic Permissions.
+
+<p>All rights granted under this License are granted for the term of
+copyright on the Program, and are irrevocable provided the stated
+conditions are met.  This License explicitly affirms your unlimited
+permission to run the unmodified Program.  The output from running a
+covered work is covered by this License only if the output, given its
+content, constitutes a covered work.  This License acknowledges your
+rights of fair use or other equivalent, as provided by copyright law.
+</p>
+<p>You may make, run and propagate covered works that you do not convey,
+without conditions so long as your license otherwise remains in force.
+You may convey covered works to others for the sole purpose of having
+them make modifications exclusively for you, or provide you with
+facilities for running those works, provided that you comply with the
+terms of this License in conveying all material for which you do not
+control copyright.  Those thus making or running the covered works for
+you must do so exclusively on your behalf, under your direction and
+control, on terms that prohibit them from making any copies of your
+copyrighted material outside their relationship with you.
+</p>
+<p>Conveying under any other circumstances is permitted solely under the
+conditions stated below.  Sublicensing is not allowed; section 10
+makes it unnecessary.
+</p>
+</li><li> Protecting Users&rsquo; Legal Rights From Anti-Circumvention Law.
+
+<p>No covered work shall be deemed part of an effective technological
+measure under any applicable law fulfilling obligations under article
+11 of the WIPO copyright treaty adopted on 20 December 1996, or
+similar laws prohibiting or restricting circumvention of such
+measures.
+</p>
+<p>When you convey a covered work, you waive any legal power to forbid
+circumvention of technological measures to the extent such
+circumvention is effected by exercising rights under this License with
+respect to the covered work, and you disclaim any intention to limit
+operation or modification of the work as a means of enforcing, against
+the work&rsquo;s users, your or third parties&rsquo; legal rights to forbid
+circumvention of technological measures.
+</p>
+</li><li> Conveying Verbatim Copies.
+
+<p>You may convey verbatim copies of the Program&rsquo;s source code as you
+receive it, in any medium, provided that you conspicuously and
+appropriately publish on each copy an appropriate copyright notice;
+keep intact all notices stating that this License and any
+non-permissive terms added in accord with section 7 apply to the code;
+keep intact all notices of the absence of any warranty; and give all
+recipients a copy of this License along with the Program.
+</p>
+<p>You may charge any price or no price for each copy that you convey,
+and you may offer support or warranty protection for a fee.
+</p>
+</li><li> Conveying Modified Source Versions.
+
+<p>You may convey a work based on the Program, or the modifications to
+produce it from the Program, in the form of source code under the
+terms of section 4, provided that you also meet all of these
+conditions:
+</p>
+<ol>
+<li> The work must carry prominent notices stating that you modified it,
+and giving a relevant date.
+
+</li><li> The work must carry prominent notices stating that it is released
+under this License and any conditions added under section 7.  This
+requirement modifies the requirement in section 4 to &ldquo;keep intact all
+notices&rdquo;.
+
+</li><li> You must license the entire work, as a whole, under this License to
+anyone who comes into possession of a copy.  This License will
+therefore apply, along with any applicable section 7 additional terms,
+to the whole of the work, and all its parts, regardless of how they
+are packaged.  This License gives no permission to license the work in
+any other way, but it does not invalidate such permission if you have
+separately received it.
+
+</li><li> If the work has interactive user interfaces, each must display
+Appropriate Legal Notices; however, if the Program has interactive
+interfaces that do not display Appropriate Legal Notices, your work
+need not make them do so.
+</li></ol>
+
+<p>A compilation of a covered work with other separate and independent
+works, which are not by their nature extensions of the covered work,
+and which are not combined with it such as to form a larger program,
+in or on a volume of a storage or distribution medium, is called an
+&ldquo;aggregate&rdquo; if the compilation and its resulting copyright are not
+used to limit the access or legal rights of the compilation&rsquo;s users
+beyond what the individual works permit.  Inclusion of a covered work
+in an aggregate does not cause this License to apply to the other
+parts of the aggregate.
+</p>
+</li><li> Conveying Non-Source Forms.
+
+<p>You may convey a covered work in object code form under the terms of
+sections 4 and 5, provided that you also convey the machine-readable
+Corresponding Source under the terms of this License, in one of these
+ways:
+</p>
+<ol>
+<li> Convey the object code in, or embodied in, a physical product
+(including a physical distribution medium), accompanied by the
+Corresponding Source fixed on a durable physical medium customarily
+used for software interchange.
+
+</li><li> Convey the object code in, or embodied in, a physical product
+(including a physical distribution medium), accompanied by a written
+offer, valid for at least three years and valid for as long as you
+offer spare parts or customer support for that product model, to give
+anyone who possesses the object code either (1) a copy of the
+Corresponding Source for all the software in the product that is
+covered by this License, on a durable physical medium customarily used
+for software interchange, for a price no more than your reasonable
+cost of physically performing this conveying of source, or (2) access
+to copy the Corresponding Source from a network server at no charge.
+
+</li><li> Convey individual copies of the object code with a copy of the written
+offer to provide the Corresponding Source.  This alternative is
+allowed only occasionally and noncommercially, and only if you
+received the object code with such an offer, in accord with subsection
+6b.
+
+</li><li> Convey the object code by offering access from a designated place
+(gratis or for a charge), and offer equivalent access to the
+Corresponding Source in the same way through the same place at no
+further charge.  You need not require recipients to copy the
+Corresponding Source along with the object code.  If the place to copy
+the object code is a network server, the Corresponding Source may be
+on a different server (operated by you or a third party) that supports
+equivalent copying facilities, provided you maintain clear directions
+next to the object code saying where to find the Corresponding Source.
+Regardless of what server hosts the Corresponding Source, you remain
+obligated to ensure that it is available for as long as needed to
+satisfy these requirements.
+
+</li><li> Convey the object code using peer-to-peer transmission, provided you
+inform other peers where the object code and Corresponding Source of
+the work are being offered to the general public at no charge under
+subsection 6d.
+
+</li></ol>
+
+<p>A separable portion of the object code, whose source code is excluded
+from the Corresponding Source as a System Library, need not be
+included in conveying the object code work.
+</p>
+<p>A &ldquo;User Product&rdquo; is either (1) a &ldquo;consumer product&rdquo;, which means any
+tangible personal property which is normally used for personal,
+family, or household purposes, or (2) anything designed or sold for
+incorporation into a dwelling.  In determining whether a product is a
+consumer product, doubtful cases shall be resolved in favor of
+coverage.  For a particular product received by a particular user,
+&ldquo;normally used&rdquo; refers to a typical or common use of that class of
+product, regardless of the status of the particular user or of the way
+in which the particular user actually uses, or expects or is expected
+to use, the product.  A product is a consumer product regardless of
+whether the product has substantial commercial, industrial or
+non-consumer uses, unless such uses represent the only significant
+mode of use of the product.
+</p>
+<p>&ldquo;Installation Information&rdquo; for a User Product means any methods,
+procedures, authorization keys, or other information required to
+install and execute modified versions of a covered work in that User
+Product from a modified version of its Corresponding Source.  The
+information must suffice to ensure that the continued functioning of
+the modified object code is in no case prevented or interfered with
+solely because modification has been made.
+</p>
+<p>If you convey an object code work under this section in, or with, or
+specifically for use in, a User Product, and the conveying occurs as
+part of a transaction in which the right of possession and use of the
+User Product is transferred to the recipient in perpetuity or for a
+fixed term (regardless of how the transaction is characterized), the
+Corresponding Source conveyed under this section must be accompanied
+by the Installation Information.  But this requirement does not apply
+if neither you nor any third party retains the ability to install
+modified object code on the User Product (for example, the work has
+been installed in ROM).
+</p>
+<p>The requirement to provide Installation Information does not include a
+requirement to continue to provide support service, warranty, or
+updates for a work that has been modified or installed by the
+recipient, or for the User Product in which it has been modified or
+installed.  Access to a network may be denied when the modification
+itself materially and adversely affects the operation of the network
+or violates the rules and protocols for communication across the
+network.
+</p>
+<p>Corresponding Source conveyed, and Installation Information provided,
+in accord with this section must be in a format that is publicly
+documented (and with an implementation available to the public in
+source code form), and must require no special password or key for
+unpacking, reading or copying.
+</p>
+</li><li> Additional Terms.
+
+<p>&ldquo;Additional permissions&rdquo; are terms that supplement the terms of this
+License by making exceptions from one or more of its conditions.
+Additional permissions that are applicable to the entire Program shall
+be treated as though they were included in this License, to the extent
+that they are valid under applicable law.  If additional permissions
+apply only to part of the Program, that part may be used separately
+under those permissions, but the entire Program remains governed by
+this License without regard to the additional permissions.
+</p>
+<p>When you convey a copy of a covered work, you may at your option
+remove any additional permissions from that copy, or from any part of
+it.  (Additional permissions may be written to require their own
+removal in certain cases when you modify the work.)  You may place
+additional permissions on material, added by you to a covered work,
+for which you have or can give appropriate copyright permission.
+</p>
+<p>Notwithstanding any other provision of this License, for material you
+add to a covered work, you may (if authorized by the copyright holders
+of that material) supplement the terms of this License with terms:
+</p>
+<ol>
+<li> Disclaiming warranty or limiting liability differently from the terms
+of sections 15 and 16 of this License; or
+
+</li><li> Requiring preservation of specified reasonable legal notices or author
+attributions in that material or in the Appropriate Legal Notices
+displayed by works containing it; or
+
+</li><li> Prohibiting misrepresentation of the origin of that material, or
+requiring that modified versions of such material be marked in
+reasonable ways as different from the original version; or
+
+</li><li> Limiting the use for publicity purposes of names of licensors or
+authors of the material; or
+
+</li><li> Declining to grant rights under trademark law for use of some trade
+names, trademarks, or service marks; or
+
+</li><li> Requiring indemnification of licensors and authors of that material by
+anyone who conveys the material (or modified versions of it) with
+contractual assumptions of liability to the recipient, for any
+liability that these contractual assumptions directly impose on those
+licensors and authors.
+</li></ol>
+
+<p>All other non-permissive additional terms are considered &ldquo;further
+restrictions&rdquo; within the meaning of section 10.  If the Program as you
+received it, or any part of it, contains a notice stating that it is
+governed by this License along with a term that is a further
+restriction, you may remove that term.  If a license document contains
+a further restriction but permits relicensing or conveying under this
+License, you may add to a covered work material governed by the terms
+of that license document, provided that the further restriction does
+not survive such relicensing or conveying.
+</p>
+<p>If you add terms to a covered work in accord with this section, you
+must place, in the relevant source files, a statement of the
+additional terms that apply to those files, or a notice indicating
+where to find the applicable terms.
+</p>
+<p>Additional terms, permissive or non-permissive, may be stated in the
+form of a separately written license, or stated as exceptions; the
+above requirements apply either way.
+</p>
+</li><li> Termination.
+
+<p>You may not propagate or modify a covered work except as expressly
+provided under this License.  Any attempt otherwise to propagate or
+modify it is void, and will automatically terminate your rights under
+this License (including any patent licenses granted under the third
+paragraph of section 11).
+</p>
+<p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.
+</p>
+<p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+</p>
+<p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, you do not qualify to receive new licenses for the same
+material under section 10.
+</p>
+</li><li> Acceptance Not Required for Having Copies.
+
+<p>You are not required to accept this License in order to receive or run
+a copy of the Program.  Ancillary propagation of a covered work
+occurring solely as a consequence of using peer-to-peer transmission
+to receive a copy likewise does not require acceptance.  However,
+nothing other than this License grants you permission to propagate or
+modify any covered work.  These actions infringe copyright if you do
+not accept this License.  Therefore, by modifying or propagating a
+covered work, you indicate your acceptance of this License to do so.
+</p>
+</li><li> Automatic Licensing of Downstream Recipients.
+
+<p>Each time you convey a covered work, the recipient automatically
+receives a license from the original licensors, to run, modify and
+propagate that work, subject to this License.  You are not responsible
+for enforcing compliance by third parties with this License.
+</p>
+<p>An &ldquo;entity transaction&rdquo; is a transaction transferring control of an
+organization, or substantially all assets of one, or subdividing an
+organization, or merging organizations.  If propagation of a covered
+work results from an entity transaction, each party to that
+transaction who receives a copy of the work also receives whatever
+licenses to the work the party&rsquo;s predecessor in interest had or could
+give under the previous paragraph, plus a right to possession of the
+Corresponding Source of the work from the predecessor in interest, if
+the predecessor has it or can get it with reasonable efforts.
+</p>
+<p>You may not impose any further restrictions on the exercise of the
+rights granted or affirmed under this License.  For example, you may
+not impose a license fee, royalty, or other charge for exercise of
+rights granted under this License, and you may not initiate litigation
+(including a cross-claim or counterclaim in a lawsuit) alleging that
+any patent claim is infringed by making, using, selling, offering for
+sale, or importing the Program or any portion of it.
+</p>
+</li><li> Patents.
+
+<p>A &ldquo;contributor&rdquo; is a copyright holder who authorizes use under this
+License of the Program or a work on which the Program is based.  The
+work thus licensed is called the contributor&rsquo;s &ldquo;contributor version&rdquo;.
+</p>
+<p>A contributor&rsquo;s &ldquo;essential patent claims&rdquo; are all patent claims owned
+or controlled by the contributor, whether already acquired or
+hereafter acquired, that would be infringed by some manner, permitted
+by this License, of making, using, or selling its contributor version,
+but do not include claims that would be infringed only as a
+consequence of further modification of the contributor version.  For
+purposes of this definition, &ldquo;control&rdquo; includes the right to grant
+patent sublicenses in a manner consistent with the requirements of
+this License.
+</p>
+<p>Each contributor grants you a non-exclusive, worldwide, royalty-free
+patent license under the contributor&rsquo;s essential patent claims, to
+make, use, sell, offer for sale, import and otherwise run, modify and
+propagate the contents of its contributor version.
+</p>
+<p>In the following three paragraphs, a &ldquo;patent license&rdquo; is any express
+agreement or commitment, however denominated, not to enforce a patent
+(such as an express permission to practice a patent or covenant not to
+sue for patent infringement).  To &ldquo;grant&rdquo; such a patent license to a
+party means to make such an agreement or commitment not to enforce a
+patent against the party.
+</p>
+<p>If you convey a covered work, knowingly relying on a patent license,
+and the Corresponding Source of the work is not available for anyone
+to copy, free of charge and under the terms of this License, through a
+publicly available network server or other readily accessible means,
+then you must either (1) cause the Corresponding Source to be so
+available, or (2) arrange to deprive yourself of the benefit of the
+patent license for this particular work, or (3) arrange, in a manner
+consistent with the requirements of this License, to extend the patent
+license to downstream recipients.  &ldquo;Knowingly relying&rdquo; means you have
+actual knowledge that, but for the patent license, your conveying the
+covered work in a country, or your recipient&rsquo;s use of the covered work
+in a country, would infringe one or more identifiable patents in that
+country that you have reason to believe are valid.
+</p>
+<p>If, pursuant to or in connection with a single transaction or
+arrangement, you convey, or propagate by procuring conveyance of, a
+covered work, and grant a patent license to some of the parties
+receiving the covered work authorizing them to use, propagate, modify
+or convey a specific copy of the covered work, then the patent license
+you grant is automatically extended to all recipients of the covered
+work and works based on it.
+</p>
+<p>A patent license is &ldquo;discriminatory&rdquo; if it does not include within the
+scope of its coverage, prohibits the exercise of, or is conditioned on
+the non-exercise of one or more of the rights that are specifically
+granted under this License.  You may not convey a covered work if you
+are a party to an arrangement with a third party that is in the
+business of distributing software, under which you make payment to the
+third party based on the extent of your activity of conveying the
+work, and under which the third party grants, to any of the parties
+who would receive the covered work from you, a discriminatory patent
+license (a) in connection with copies of the covered work conveyed by
+you (or copies made from those copies), or (b) primarily for and in
+connection with specific products or compilations that contain the
+covered work, unless you entered into that arrangement, or that patent
+license was granted, prior to 28 March 2007.
+</p>
+<p>Nothing in this License shall be construed as excluding or limiting
+any implied license or other defenses to infringement that may
+otherwise be available to you under applicable patent law.
+</p>
+</li><li> No Surrender of Others&rsquo; Freedom.
+
+<p>If conditions are imposed on you (whether by court order, agreement or
+otherwise) that contradict the conditions of this License, they do not
+excuse you from the conditions of this License.  If you cannot convey
+a covered work so as to satisfy simultaneously your obligations under
+this License and any other pertinent obligations, then as a
+consequence you may not convey it at all.  For example, if you agree
+to terms that obligate you to collect a royalty for further conveying
+from those to whom you convey the Program, the only way you could
+satisfy both those terms and this License would be to refrain entirely
+from conveying the Program.
+</p>
+</li><li> Use with the GNU Affero General Public License.
+
+<p>Notwithstanding any other provision of this License, you have
+permission to link or combine any covered work with a work licensed
+under version 3 of the GNU Affero General Public License into a single
+combined work, and to convey the resulting work.  The terms of this
+License will continue to apply to the part which is the covered work,
+but the special requirements of the GNU Affero General Public License,
+section 13, concerning interaction through a network will apply to the
+combination as such.
+</p>
+</li><li> Revised Versions of this License.
+
+<p>The Free Software Foundation may publish revised and/or new versions
+of the GNU General Public License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.
+</p>
+<p>Each version is given a distinguishing version number.  If the Program
+specifies that a certain numbered version of the GNU General Public
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that numbered version or
+of any later version published by the Free Software Foundation.  If
+the Program does not specify a version number of the GNU General
+Public License, you may choose any version ever published by the Free
+Software Foundation.
+</p>
+<p>If the Program specifies that a proxy can decide which future versions
+of the GNU General Public License can be used, that proxy&rsquo;s public
+statement of acceptance of a version permanently authorizes you to
+choose that version for the Program.
+</p>
+<p>Later license versions may give you additional or different
+permissions.  However, no additional obligations are imposed on any
+author or copyright holder as a result of your choosing to follow a
+later version.
+</p>
+</li><li> Disclaimer of Warranty.
+
+<p>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM &ldquo;AS IS&rdquo; WITHOUT
+WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND
+PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE PROGRAM PROVE
+DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR
+CORRECTION.
+</p>
+</li><li> Limitation of Liability.
+
+<p>IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR
+CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
+INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT
+NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR
+LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM
+TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER
+PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+</p>
+</li><li> Interpretation of Sections 15 and 16.
+
+<p>If the disclaimer of warranty and limitation of liability provided
+above cannot be given local legal effect according to their terms,
+reviewing courts shall apply local law that most closely approximates
+an absolute waiver of all civil liability in connection with the
+Program, unless a warranty or assumption of liability accompanies a
+copy of the Program in return for a fee.
+</p>
+</li></ol>
+
+<a name="END-OF-TERMS-AND-CONDITIONS"></a>
+<h3 class="heading">END OF TERMS AND CONDITIONS</h3>
+
+<a name="How-to-Apply-These-Terms-to-Your-New-Programs"></a>
+<h3 class="heading">How to Apply These Terms to Your New Programs</h3>
+
+<p>If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these
+terms.
+</p>
+<p>To do so, attach the following notices to the program.  It is safest
+to attach them to the start of each source file to most effectively
+state the exclusion of warranty; and each file should have at least
+the &ldquo;copyright&rdquo; line and a pointer to where the full notice is found.
+</p>
+<div class="smallexample">
+<pre class="smallexample"><var>one line to give the program's name and a brief idea of what it does.</var>
+Copyright (C) <var>year</var> <var>name of author</var>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+</pre></div>
+
+<p>Also add information on how to contact you by electronic and paper mail.
+</p>
+<p>If the program does terminal interaction, make it output a short
+notice like this when it starts in an interactive mode:
+</p>
+<div class="smallexample">
+<pre class="smallexample"><var>program</var> Copyright (C) <var>year</var> <var>name of author</var>
+This program comes with ABSOLUTELY NO WARRANTY; for details type &lsquo;<samp>show w</samp>&rsquo;.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type &lsquo;<samp>show c</samp>&rsquo; for details.
+</pre></div>
+
+<p>The hypothetical commands &lsquo;<samp>show w</samp>&rsquo; and &lsquo;<samp>show c</samp>&rsquo; should show
+the appropriate parts of the General Public License.  Of course, your
+program&rsquo;s commands might be different; for a GUI interface, you would
+use an &ldquo;about box&rdquo;.
+</p>
+<p>You should also get your employer (if you work as a programmer) or school,
+if any, to sign a &ldquo;copyright disclaimer&rdquo; for the program, if necessary.
+For more information on this, and how to apply and follow the GNU GPL, see
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+</p>
+<p>The GNU General Public License does not permit incorporating your
+program into proprietary programs.  If your program is a subroutine
+library, you may consider it more useful to permit linking proprietary
+applications with the library.  If this is what you want to do, use
+the GNU Lesser General Public License instead of this License.  But
+first, please read <a href="http://www.gnu.org/philosophy/why-not-lgpl.html">http://www.gnu.org/philosophy/why-not-lgpl.html</a>.
+</p>
+<hr>
+<a name="Contributors"></a>
+<div class="header">
+<p>
+Next: <a href="#Motivation" accesskey="n" rel="next">Motivation</a>, Previous: <a href="#Copying" accesskey="p" rel="prev">Copying</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Contributors-to-GNU-gperf-Utility"></a>
+<h2 class="unnumbered">Contributors to GNU <code>gperf</code> Utility</h2>
+
+<ul>
+<li> <a name="index-Bugs"></a>
+The GNU <code>gperf</code> perfect hash function generator utility was
+written in GNU C++ by Douglas C. Schmidt.  The general
+idea for the perfect hash function generator was inspired by Keith
+Bostic&rsquo;s algorithm written in C, and distributed to net.sources around
+1984.  The current program is a heavily modified, enhanced, and extended
+implementation of Keith&rsquo;s basic idea, created at the University of
+California, Irvine.  Bugs, patches, and suggestions should be reported
+to <code>&lt;bug-gnu-gperf@gnu.org&gt;</code>.
+
+</li><li> Special thanks is extended to Michael Tiemann and Doug Lea, for
+providing a useful compiler, and for giving me a forum to exhibit my
+creation.
+
+<p>In addition, Adam de Boor and Nels Olson provided many tips and insights
+that greatly helped improve the quality and functionality of <code>gperf</code>.
+</p>
+</li><li> Bruno Haible enhanced and optimized the search algorithm.  He also rewrote
+the input routines and the output routines for better reliability, and
+added a testsuite.
+</li></ul>
+
+<hr>
+<a name="Motivation"></a>
+<div class="header">
+<p>
+Next: <a href="#Search-Structures" accesskey="n" rel="next">Search Structures</a>, Previous: <a href="#Contributors" accesskey="p" rel="prev">Contributors</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Introduction-1"></a>
+<h2 class="chapter">1 Introduction</h2>
+
+<p><code>gperf</code> is a perfect hash function generator written in C++.  It
+transforms an <var>n</var> element user-specified keyword set <var>W</var> into a
+perfect hash function <var>F</var>.  <var>F</var> uniquely maps keywords in
+<var>W</var> onto the range 0..<var>k</var>, where <var>k</var> &gt;= <var>n-1</var>.  If <var>k</var>
+= <var>n-1</var> then <var>F</var> is a <em>minimal</em> perfect hash function.
+<code>gperf</code> generates a 0..<var>k</var> element static lookup table and a
+pair of C functions.  These functions determine whether a given
+character string <var>s</var> occurs in <var>W</var>, using at most one probe into
+the lookup table.
+</p>
+<p><code>gperf</code> currently generates the reserved keyword recognizer for
+lexical analyzers in several production and research compilers and
+language processing tools, including GNU C, GNU C++, GNU Java, GNU Pascal,
+GNU Modula 3, and GNU indent.  Complete C++ source code for <code>gperf</code> is
+available from <code>http://ftp.gnu.org/pub/gnu/gperf/</code>.
+A paper describing <code>gperf</code>&rsquo;s design and implementation in greater
+detail is available in the Second USENIX C++ Conference proceedings
+or from <code>http://www.cs.wustl.edu/~schmidt/resume.html</code>.
+</p>
+<hr>
+<a name="Search-Structures"></a>
+<div class="header">
+<p>
+Next: <a href="#Description" accesskey="n" rel="next">Description</a>, Previous: <a href="#Motivation" accesskey="p" rel="prev">Motivation</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Static-search-structures-and-GNU-gperf"></a>
+<h2 class="chapter">2 Static search structures and GNU <code>gperf</code></h2>
+<a name="index-Static-search-structure"></a>
+
+<p>A <em>static search structure</em> is an Abstract Data Type with certain
+fundamental operations, e.g., <em>initialize</em>, <em>insert</em>,
+and <em>retrieve</em>.  Conceptually, all insertions occur before any
+retrievals.  In practice, <code>gperf</code> generates a <em>static</em> array
+containing search set keywords and any associated attributes specified
+by the user.  Thus, there is essentially no execution-time cost for the
+insertions.  It is a useful data structure for representing <em>static
+search sets</em>.  Static search sets occur frequently in software system
+applications.  Typical static search sets include compiler reserved
+words, assembler instruction opcodes, and built-in shell interpreter
+commands.  Search set members, called <em>keywords</em>, are inserted into
+the structure only once, usually during program initialization, and are
+not generally modified at run-time.
+</p>
+<p>Numerous static search structure implementations exist, e.g.,
+arrays, linked lists, binary search trees, digital search tries, and
+hash tables.  Different approaches offer trade-offs between space
+utilization and search time efficiency.  For example, an <var>n</var> element
+sorted array is space efficient, though the average-case time
+complexity for retrieval operations using binary search is
+proportional to log <var>n</var>.  Conversely, hash table implementations
+often locate a table entry in constant time, but typically impose
+additional memory overhead and exhibit poor worst case performance.
+</p>
+<a name="index-Minimal-perfect-hash-functions"></a>
+<p><em>Minimal perfect hash functions</em> provide an optimal solution for a
+particular class of static search sets.  A minimal perfect hash
+function is defined by two properties:
+</p>
+<ul>
+<li> It allows keyword recognition in a static search set using at most
+<em>one</em> probe into the hash table.  This represents the &ldquo;perfect&rdquo;
+property.
+</li><li> The actual memory allocated to store the keywords is precisely large
+enough for the keyword set, and <em>no larger</em>.  This is the
+&ldquo;minimal&rdquo; property.
+</li></ul>
+
+<p>For most applications it is far easier to generate <em>perfect</em> hash
+functions than <em>minimal perfect</em> hash functions.  Moreover,
+non-minimal perfect hash functions frequently execute faster than
+minimal ones in practice.  This phenomena occurs since searching a
+sparse keyword table increases the probability of locating a &ldquo;null&rdquo;
+entry, thereby reducing string comparisons.  <code>gperf</code>&rsquo;s default
+behavior generates <em>near-minimal</em> perfect hash functions for
+keyword sets.  However, <code>gperf</code> provides many options that permit
+user control over the degree of minimality and perfection.
+</p>
+<p>Static search sets often exhibit relative stability over time.  For
+example, Ada&rsquo;s 63 reserved words have remained constant for nearly a
+decade.  It is therefore frequently worthwhile to expend concerted
+effort building an optimal search structure <em>once</em>, if it
+subsequently receives heavy use multiple times.  <code>gperf</code> removes
+the drudgery associated with constructing time- and space-efficient
+search structures by hand.  It has proven a useful and practical tool
+for serious programming projects.  Output from <code>gperf</code> is currently
+used in several production and research compilers, including GNU C, GNU
+C++, GNU Java, GNU Pascal, and GNU Modula 3.  The latter two compilers are
+not yet part of the official GNU distribution.  Each compiler utilizes
+<code>gperf</code> to automatically generate static search structures that
+efficiently identify their respective reserved keywords.
+</p>
+<hr>
+<a name="Description"></a>
+<div class="header">
+<p>
+Next: <a href="#Options" accesskey="n" rel="next">Options</a>, Previous: <a href="#Search-Structures" accesskey="p" rel="prev">Search Structures</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="High_002dLevel-Description-of-GNU-gperf"></a>
+<h2 class="chapter">3 High-Level Description of GNU <code>gperf</code></h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Input-Format" accesskey="1">Input Format</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Input Format to <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Format" accesskey="2">Output Format</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Output Format for Generated C Code with <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Binary-Strings" accesskey="3">Binary Strings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Use of NUL bytes
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Copyright" accesskey="4">Output Copyright</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The Copyright of the Output.
+</td></tr>
+</table>
+
+<p>The perfect hash function generator <code>gperf</code> reads a set of
+&ldquo;keywords&rdquo; from an input file (or from the standard input by
+default).  It attempts to derive a perfect hashing function that
+recognizes a member of the <em>static keyword set</em> with at most a
+single probe into the lookup table.  If <code>gperf</code> succeeds in
+generating such a function it produces a pair of C source code routines
+that perform hashing and table lookup recognition.  All generated C code
+is directed to the standard output.  Command-line options described
+below allow you to modify the input and output format to <code>gperf</code>.
+</p>
+<p>By default, <code>gperf</code> attempts to produce time-efficient code, with
+less emphasis on efficient space utilization.  However, several options
+exist that permit trading-off execution time for storage space and vice
+versa.  In particular, expanding the generated table size produces a
+sparse search structure, generally yielding faster searches.
+Conversely, you can direct <code>gperf</code> to utilize a C <code>switch</code>
+statement scheme that minimizes data space storage size.  Furthermore,
+using a C <code>switch</code> may actually speed up the keyword retrieval time
+somewhat.  Actual results depend on your C compiler, of course.
+</p>
+<p>In general, <code>gperf</code> assigns values to the bytes it is using
+for hashing until some set of values gives each keyword a unique value.
+A helpful heuristic is that the larger the hash value range, the easier
+it is for <code>gperf</code> to find and generate a perfect hash function.
+Experimentation is the key to getting the most from <code>gperf</code>.
+</p>
+<hr>
+<a name="Input-Format"></a>
+<div class="header">
+<p>
+Next: <a href="#Output-Format" accesskey="n" rel="next">Output Format</a>, Previous: <a href="#Description" accesskey="p" rel="prev">Description</a>, Up: <a href="#Description" accesskey="u" rel="up">Description</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Input-Format-to-gperf"></a>
+<h3 class="section">3.1 Input Format to <code>gperf</code></h3>
+<a name="index-Format"></a>
+<a name="index-Declaration-section"></a>
+<a name="index-Keywords-section"></a>
+<a name="index-Functions-section"></a>
+<p>You can control the input file format by varying certain command-line
+arguments, in particular the &lsquo;<samp>-t</samp>&rsquo; option.  The input&rsquo;s appearance
+is similar to GNU utilities <code>flex</code> and <code>bison</code> (or UNIX
+utilities <code>lex</code> and <code>yacc</code>).  Here&rsquo;s an outline of the general
+format:
+</p>
+<div class="example">
+<pre class="example">declarations
+%%
+keywords
+%%
+functions
+</pre></div>
+
+<p><em>Unlike</em> <code>flex</code> or <code>bison</code>, the declarations section and
+the functions section are optional.  The following sections describe the
+input format for each section.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Declarations" accesskey="1">Declarations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Declarations.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Keywords" accesskey="2">Keywords</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Format for Keyword Entries.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Functions" accesskey="3">Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Including Additional C Functions.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Controls-for-GNU-indent" accesskey="4">Controls for GNU indent</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to place directives for GNU <code>indent</code>.
+</td></tr>
+</table>
+
+<p>It is possible to omit the declaration section entirely, if the &lsquo;<samp>-t</samp>&rsquo;
+option is not given.  In this case the input file begins directly with the
+first keyword line, e.g.:
+</p>
+<div class="example">
+<pre class="example">january
+february
+march
+april
+...
+</pre></div>
+
+<hr>
+<a name="Declarations"></a>
+<div class="header">
+<p>
+Next: <a href="#Keywords" accesskey="n" rel="next">Keywords</a>, Previous: <a href="#Input-Format" accesskey="p" rel="prev">Input Format</a>, Up: <a href="#Input-Format" accesskey="u" rel="up">Input Format</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Declarations-1"></a>
+<h4 class="subsection">3.1.1 Declarations</h4>
+
+<p>The keyword input file optionally contains a section for including
+arbitrary C declarations and definitions, <code>gperf</code> declarations that
+act like command-line options, as well as for providing a user-supplied
+<code>struct</code>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#User_002dsupplied-Struct" accesskey="1">User-supplied Struct</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying keywords with attributes.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Gperf-Declarations" accesskey="2">Gperf Declarations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Embedding command line options in the input.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#C-Code-Inclusion" accesskey="3">C Code Inclusion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Including C declarations and definitions.
+</td></tr>
+</table>
+
+<hr>
+<a name="User_002dsupplied-Struct"></a>
+<div class="header">
+<p>
+Next: <a href="#Gperf-Declarations" accesskey="n" rel="next">Gperf Declarations</a>, Previous: <a href="#Declarations" accesskey="p" rel="prev">Declarations</a>, Up: <a href="#Declarations" accesskey="u" rel="up">Declarations</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="User_002dsupplied-struct"></a>
+<h4 class="subsubsection">3.1.1.1 User-supplied <code>struct</code></h4>
+
+<p>If the &lsquo;<samp>-t</samp>&rsquo; option (or, equivalently, the &lsquo;<samp>%struct-type</samp>&rsquo; declaration)
+<em>is</em> enabled, you <em>must</em> provide a C <code>struct</code> as the last
+component in the declaration section from the input file.  The first
+field in this struct must be of type <code>char *</code> or <code>const char *</code>
+if the &lsquo;<samp>-P</samp>&rsquo; option is not given, or of type <code>int</code> if the option
+&lsquo;<samp>-P</samp>&rsquo; (or, equivalently, the &lsquo;<samp>%pic</samp>&rsquo; declaration) is enabled.
+This first field must be called &lsquo;<samp>name</samp>&rsquo;, although it is possible to modify
+its name with the &lsquo;<samp>-K</samp>&rsquo; option (or, equivalently, the
+&lsquo;<samp>%define slot-name</samp>&rsquo; declaration) described below.
+</p>
+<p>Here is a simple example, using months of the year and their attributes as
+input:
+</p>
+<div class="example">
+<pre class="example">struct month { char *name; int number; int days; int leap_days; };
+%%
+january,   1, 31, 31
+february,  2, 28, 29
+march,     3, 31, 31
+april,     4, 30, 30
+may,       5, 31, 31
+june,      6, 30, 30
+july,      7, 31, 31
+august,    8, 31, 31
+september, 9, 30, 30
+october,  10, 31, 31
+november, 11, 30, 30
+december, 12, 31, 31
+</pre></div>
+
+<a name="index-_0025_0025"></a>
+<p>Separating the <code>struct</code> declaration from the list of keywords and
+other fields are a pair of consecutive percent signs, &lsquo;<samp>%%</samp>&rsquo;,
+appearing left justified in the first column, as in the UNIX utility
+<code>lex</code>.
+</p>
+<p>If the <code>struct</code> has already been declared in an include file, it can
+be mentioned in an abbreviated form, like this:
+</p>
+<div class="example">
+<pre class="example">struct month;
+%%
+january,   1, 31, 31
+...
+</pre></div>
+
+<hr>
+<a name="Gperf-Declarations"></a>
+<div class="header">
+<p>
+Next: <a href="#C-Code-Inclusion" accesskey="n" rel="next">C Code Inclusion</a>, Previous: <a href="#User_002dsupplied-Struct" accesskey="p" rel="prev">User-supplied Struct</a>, Up: <a href="#Declarations" accesskey="u" rel="up">Declarations</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Gperf-Declarations-1"></a>
+<h4 class="subsubsection">3.1.1.2 Gperf Declarations</h4>
+
+<p>The declaration section can contain <code>gperf</code> declarations.  They
+influence the way <code>gperf</code> works, like command line options do.
+In fact, every such declaration is equivalent to a command line option.
+There are three forms of declarations:
+</p>
+<ol>
+<li> Declarations without argument, like &lsquo;<samp>%compare-lengths</samp>&rsquo;.
+
+</li><li> Declarations with an argument, like &lsquo;<samp>%switch=<var>count</var></samp>&rsquo;.
+
+</li><li> Declarations of names of entities in the output file, like
+&lsquo;<samp>%define lookup-function-name <var>name</var></samp>&rsquo;.
+</li></ol>
+
+<p>When a declaration is given both in the input file and as a command line
+option, the command-line option&rsquo;s value prevails.
+</p>
+<p>The following <code>gperf</code> declarations are available.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>%delimiters=<var>delimiter-list</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025delimiters"></a>
+<p>Allows you to provide a string containing delimiters used to
+separate keywords from their attributes.  The default is &quot;,&quot;.  This
+option is essential if you want to use keywords that have embedded
+commas or newlines.
+</p>
+</dd>
+<dt>&lsquo;<samp>%struct-type</samp>&rsquo;</dt>
+<dd><a name="index-_0025struct_002dtype"></a>
+<p>Allows you to include a <code>struct</code> type declaration for generated
+code; see above for an example.
+</p>
+</dd>
+<dt>&lsquo;<samp>%ignore-case</samp>&rsquo;</dt>
+<dd><a name="index-_0025ignore_002dcase"></a>
+<p>Consider upper and lower case ASCII characters as equivalent.  The string
+comparison will use a case insignificant character comparison.  Note that
+locale dependent case mappings are ignored.
+</p>
+</dd>
+<dt>&lsquo;<samp>%language=<var>language-name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025language"></a>
+<p>Instructs <code>gperf</code> to generate code in the language specified by the
+option&rsquo;s argument.  Languages handled are currently:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>KR-C</samp>&rsquo;</dt>
+<dd><p>Old-style K&amp;R C.  This language is understood by old-style C compilers and
+ANSI C compilers, but ANSI C compilers may flag warnings (or even errors)
+because of lacking &lsquo;<samp>const</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>C</samp>&rsquo;</dt>
+<dd><p>Common C.  This language is understood by ANSI C compilers, and also by
+old-style C compilers, provided that you <code>#define const</code> to empty
+for compilers which don&rsquo;t know about this keyword.
+</p>
+</dd>
+<dt>&lsquo;<samp>ANSI-C</samp>&rsquo;</dt>
+<dd><p>ANSI C.  This language is understood by ANSI C (C89, ISO C90) compilers,
+ISO C99 compilers, and C++ compilers.
+</p>
+</dd>
+<dt>&lsquo;<samp>C++</samp>&rsquo;</dt>
+<dd><p>C++.  This language is understood by C++ compilers.
+</p></dd>
+</dl>
+
+<p>The default is C.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define slot-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-slot_002dname"></a>
+<p>This declaration is only useful when option &lsquo;<samp>-t</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) has been given.
+By default, the program assumes the structure component identifier for
+the keyword is &lsquo;<samp>name</samp>&rsquo;.  This option allows an arbitrary choice of
+identifier for this component, although it still must occur as the first
+field in your supplied <code>struct</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define initializer-suffix <var>initializers</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-initializer_002dsuffix"></a>
+<p>This declaration is only useful when option &lsquo;<samp>-t</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) has been given.
+It permits to specify initializers for the structure members following
+<var>slot-name</var> in empty hash table entries.  The list of initializers
+should start with a comma.  By default, the emitted code will
+zero-initialize structure members following <var>slot-name</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define hash-function-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-hash_002dfunction_002dname"></a>
+<p>Allows you to specify the name for the generated hash function.  Default
+name is &lsquo;<samp>hash</samp>&rsquo;.  This option permits the use of two hash tables in
+the same file.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define lookup-function-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-lookup_002dfunction_002dname"></a>
+<p>Allows you to specify the name for the generated lookup function.
+Default name is &lsquo;<samp>in_word_set</samp>&rsquo;.  This option permits multiple
+generated hash functions to be used in the same application.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define class-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-class_002dname"></a>
+<p>This option is only useful when option &lsquo;<samp>-L C++</samp>&rsquo; (or, equivalently,
+the &lsquo;<samp>%language=C++</samp>&rsquo; declaration) has been given.  It
+allows you to specify the name of generated C++ class.  Default name is
+<code>Perfect_Hash</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>%7bit</samp>&rsquo;</dt>
+<dd><a name="index-_00257bit"></a>
+<p>This option specifies that all strings that will be passed as arguments
+to the generated hash function and the generated lookup function will
+solely consist of 7-bit ASCII characters (bytes in the range 0..127).
+(Note that the ANSI C functions <code>isalnum</code> and <code>isgraph</code> do
+<em>not</em> guarantee that a byte is in this range.  Only an explicit
+test like &lsquo;<samp>c &gt;= 'A' &amp;&amp; c &lt;= 'Z'</samp>&rsquo; guarantees this.)
+</p>
+</dd>
+<dt>&lsquo;<samp>%compare-lengths</samp>&rsquo;</dt>
+<dd><a name="index-_0025compare_002dlengths"></a>
+<p>Compare keyword lengths before trying a string comparison.  This option
+is mandatory for binary comparisons (see <a href="#Binary-Strings">Binary Strings</a>).  It also might
+cut down on the number of string comparisons made during the lookup, since
+keywords with different lengths are never compared via <code>strcmp</code>.
+However, using &lsquo;<samp>%compare-lengths</samp>&rsquo; might greatly increase the size of the
+generated C code if the lookup table range is large (which implies that
+the switch option &lsquo;<samp>-S</samp>&rsquo; or &lsquo;<samp>%switch</samp>&rsquo; is not enabled), since the length
+table contains as many elements as there are entries in the lookup table.
+</p>
+</dd>
+<dt>&lsquo;<samp>%compare-strncmp</samp>&rsquo;</dt>
+<dd><a name="index-_0025compare_002dstrncmp"></a>
+<p>Generates C code that uses the <code>strncmp</code> function to perform
+string comparisons.  The default action is to use <code>strcmp</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>%readonly-tables</samp>&rsquo;</dt>
+<dd><a name="index-_0025readonly_002dtables"></a>
+<p>Makes the contents of all generated lookup tables constant, i.e.,
+&ldquo;readonly&rdquo;.  Many compilers can generate more efficient code for this
+by putting the tables in readonly memory.
+</p>
+</dd>
+<dt>&lsquo;<samp>%enum</samp>&rsquo;</dt>
+<dd><a name="index-_0025enum"></a>
+<p>Define constant values using an enum local to the lookup function rather
+than with #defines.  This also means that different lookup functions can
+reside in the same file.  Thanks to James Clark <code>&lt;jjc@ai.mit.edu&gt;</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>%includes</samp>&rsquo;</dt>
+<dd><a name="index-_0025includes"></a>
+<p>Include the necessary system include file, <code>&lt;string.h&gt;</code>, at the
+beginning of the code.  By default, this is not done; the user must
+include this header file himself to allow compilation of the code.
+</p>
+</dd>
+<dt>&lsquo;<samp>%global-table</samp>&rsquo;</dt>
+<dd><a name="index-_0025global_002dtable"></a>
+<p>Generate the static table of keywords as a static global variable,
+rather than hiding it inside of the lookup function (which is the
+default behavior).
+</p>
+</dd>
+<dt>&lsquo;<samp>%pic</samp>&rsquo;</dt>
+<dd><a name="index-_0025pic"></a>
+<p>Optimize the generated table for inclusion in shared libraries.  This
+reduces the startup time of programs using a shared library containing
+the generated code.  If the &lsquo;<samp>%struct-type</samp>&rsquo; declaration (or,
+equivalently, the option &lsquo;<samp>-t</samp>&rsquo;) is also given, the first field of the
+user-defined struct must be of type &lsquo;<samp>int</samp>&rsquo;, not &lsquo;<samp>char *</samp>&rsquo;, because
+it will contain offsets into the string pool instead of actual strings.
+To convert such an offset to a string, you can use the expression
+&lsquo;<samp>stringpool + <var>o</var></samp>&rsquo;, where <var>o</var> is the offset.  The string pool
+name can be changed through the &lsquo;<samp>%define string-pool-name</samp>&rsquo; declaration.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define string-pool-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-string_002dpool_002dname"></a>
+<p>Allows you to specify the name of the generated string pool created by
+the declaration &lsquo;<samp>%pic</samp>&rsquo; (or, equivalently, the option &lsquo;<samp>-P</samp>&rsquo;).
+The default name is &lsquo;<samp>stringpool</samp>&rsquo;.  This declaration permits the use of
+two hash tables in the same file, with &lsquo;<samp>%pic</samp>&rsquo; and even when the
+&lsquo;<samp>%global-table</samp>&rsquo; declaration (or, equivalently, the option &lsquo;<samp>-G</samp>&rsquo;)
+is given.
+</p>
+</dd>
+<dt>&lsquo;<samp>%null-strings</samp>&rsquo;</dt>
+<dd><a name="index-_0025null_002dstrings"></a>
+<p>Use NULL strings instead of empty strings for empty keyword table entries.
+This reduces the startup time of programs using a shared library containing
+the generated code (but not as much as the declaration &lsquo;<samp>%pic</samp>&rsquo;), at the
+expense of one more test-and-branch instruction at run time.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define word-array-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-word_002darray_002dname"></a>
+<p>Allows you to specify the name for the generated array containing the
+hash table.  Default name is &lsquo;<samp>wordlist</samp>&rsquo;.  This option permits the
+use of two hash tables in the same file, even when the option &lsquo;<samp>-G</samp>&rsquo;
+(or, equivalently, the &lsquo;<samp>%global-table</samp>&rsquo; declaration) is given.
+</p>
+</dd>
+<dt>&lsquo;<samp>%define length-table-name <var>name</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025define-length_002dtable_002dname"></a>
+<p>Allows you to specify the name for the generated array containing the
+length table.  Default name is &lsquo;<samp>lengthtable</samp>&rsquo;.  This option permits the
+use of two length tables in the same file, even when the option &lsquo;<samp>-G</samp>&rsquo;
+(or, equivalently, the &lsquo;<samp>%global-table</samp>&rsquo; declaration) is given.
+</p>
+</dd>
+<dt>&lsquo;<samp>%switch=<var>count</var></samp>&rsquo;</dt>
+<dd><a name="index-_0025switch"></a>
+<p>Causes the generated C code to use a <code>switch</code> statement scheme,
+rather than an array lookup table.  This can lead to a reduction in both
+time and space requirements for some input files.  The argument to this
+option determines how many <code>switch</code> statements are generated.  A
+value of 1 generates 1 <code>switch</code> containing all the elements, a
+value of 2 generates 2 tables with 1/2 the elements in each
+<code>switch</code>, etc.  This is useful since many C compilers cannot
+correctly generate code for large <code>switch</code> statements.  This option
+was inspired in part by Keith Bostic&rsquo;s original C program.
+</p>
+</dd>
+<dt>&lsquo;<samp>%omit-struct-type</samp>&rsquo;</dt>
+<dd><a name="index-_0025omit_002dstruct_002dtype"></a>
+<p>Prevents the transfer of the type declaration to the output file.  Use
+this option if the type is already defined elsewhere.
+</p></dd>
+</dl>
+
+<hr>
+<a name="C-Code-Inclusion"></a>
+<div class="header">
+<p>
+Previous: <a href="#Gperf-Declarations" accesskey="p" rel="prev">Gperf Declarations</a>, Up: <a href="#Declarations" accesskey="u" rel="up">Declarations</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="C-Code-Inclusion-1"></a>
+<h4 class="subsubsection">3.1.1.3 C Code Inclusion</h4>
+
+<a name="index-_0025_007b"></a>
+<a name="index-_0025_007d"></a>
+<p>Using a syntax similar to GNU utilities <code>flex</code> and <code>bison</code>, it
+is possible to directly include C source text and comments verbatim into
+the generated output file.  This is accomplished by enclosing the region
+inside left-justified surrounding &lsquo;<samp>%{</samp>&rsquo;, &lsquo;<samp>%}</samp>&rsquo; pairs.  Here is
+an input fragment based on the previous example that illustrates this
+feature:
+</p>
+<div class="example">
+<pre class="example">%{
+#include &lt;assert.h&gt;
+/* This section of code is inserted directly into the output. */
+int return_month_days (struct month *months, int is_leap_year);
+%}
+struct month { char *name; int number; int days; int leap_days; };
+%%
+january,   1, 31, 31
+february,  2, 28, 29
+march,     3, 31, 31
+...
+</pre></div>
+
+<hr>
+<a name="Keywords"></a>
+<div class="header">
+<p>
+Next: <a href="#Functions" accesskey="n" rel="next">Functions</a>, Previous: <a href="#Declarations" accesskey="p" rel="prev">Declarations</a>, Up: <a href="#Input-Format" accesskey="u" rel="up">Input Format</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Format-for-Keyword-Entries"></a>
+<h4 class="subsection">3.1.2 Format for Keyword Entries</h4>
+
+<p>The second input file format section contains lines of keywords and any
+associated attributes you might supply.  A line beginning with &lsquo;<samp>#</samp>&rsquo;
+in the first column is considered a comment.  Everything following the
+&lsquo;<samp>#</samp>&rsquo; is ignored, up to and including the following newline.  A line
+beginning with &lsquo;<samp>%</samp>&rsquo; in the first column is an option declaration and
+must not occur within the keywords section.
+</p>
+<p>The first field of each non-comment line is always the keyword itself.  It
+can be given in two ways: as a simple name, i.e., without surrounding
+string quotation marks, or as a string enclosed in double-quotes, in
+C syntax, possibly with backslash escapes like <code>\&quot;</code> or <code>\234</code>
+or <code>\xa8</code>.  In either case, it must start right at the beginning
+of the line, without leading whitespace.
+In this context, a &ldquo;field&rdquo; is considered to extend up to, but
+not include, the first blank, comma, or newline.  Here is a simple
+example taken from a partial list of C reserved words:
+</p>
+<div class="example">
+<pre class="example"># These are a few C reserved words, see the c.gperf file 
+# for a complete list of ANSI C reserved words.
+unsigned
+sizeof
+switch
+signed
+if
+default
+for
+while
+return
+</pre></div>
+
+<p>Note that unlike <code>flex</code> or <code>bison</code> the first &lsquo;<samp>%%</samp>&rsquo; marker
+may be elided if the declaration section is empty.
+</p>
+<p>Additional fields may optionally follow the leading keyword.  Fields
+should be separated by commas, and terminate at the end of line.  What
+these fields mean is entirely up to you; they are used to initialize the
+elements of the user-defined <code>struct</code> provided by you in the
+declaration section.  If the &lsquo;<samp>-t</samp>&rsquo; option (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) is <em>not</em> enabled
+these fields are simply ignored.  All previous examples except the last
+one contain keyword attributes.
+</p>
+<hr>
+<a name="Functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Controls-for-GNU-indent" accesskey="n" rel="next">Controls for GNU indent</a>, Previous: <a href="#Keywords" accesskey="p" rel="prev">Keywords</a>, Up: <a href="#Input-Format" accesskey="u" rel="up">Input Format</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Including-Additional-C-Functions"></a>
+<h4 class="subsection">3.1.3 Including Additional C Functions</h4>
+
+<p>The optional third section also corresponds closely with conventions
+found in <code>flex</code> and <code>bison</code>.  All text in this section,
+starting at the final &lsquo;<samp>%%</samp>&rsquo; and extending to the end of the input
+file, is included verbatim into the generated output file.  Naturally,
+it is your responsibility to ensure that the code contained in this
+section is valid C.
+</p>
+<hr>
+<a name="Controls-for-GNU-indent"></a>
+<div class="header">
+<p>
+Previous: <a href="#Functions" accesskey="p" rel="prev">Functions</a>, Up: <a href="#Input-Format" accesskey="u" rel="up">Input Format</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Where-to-place-directives-for-GNU-indent_002e"></a>
+<h4 class="subsection">3.1.4 Where to place directives for GNU <code>indent</code>.</h4>
+
+<p>If you want to invoke GNU <code>indent</code> on a <code>gperf</code> input file,
+you will see that GNU <code>indent</code> doesn&rsquo;t understand the &lsquo;<samp>%%</samp>&rsquo;,
+&lsquo;<samp>%{</samp>&rsquo; and &lsquo;<samp>%}</samp>&rsquo; directives that control <code>gperf</code>&rsquo;s
+interpretation of the input file.  Therefore you have to insert some
+directives for GNU <code>indent</code>.  More precisely, assuming the most
+general input file structure
+</p>
+<div class="example">
+<pre class="example">declarations part 1
+%{
+verbatim code
+%}
+declarations part 2
+%%
+keywords
+%%
+functions
+</pre></div>
+
+<p>you would insert &lsquo;<samp>*INDENT-OFF*</samp>&rsquo; and &lsquo;<samp>*INDENT-ON*</samp>&rsquo; comments
+as follows:
+</p>
+<div class="example">
+<pre class="example">/* *INDENT-OFF* */
+declarations part 1
+%{
+/* *INDENT-ON* */
+verbatim code
+/* *INDENT-OFF* */
+%}
+declarations part 2
+%%
+keywords
+%%
+/* *INDENT-ON* */
+functions
+</pre></div>
+
+<hr>
+<a name="Output-Format"></a>
+<div class="header">
+<p>
+Next: <a href="#Binary-Strings" accesskey="n" rel="next">Binary Strings</a>, Previous: <a href="#Input-Format" accesskey="p" rel="prev">Input Format</a>, Up: <a href="#Description" accesskey="u" rel="up">Description</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Output-Format-for-Generated-C-Code-with-gperf"></a>
+<h3 class="section">3.2 Output Format for Generated C Code with <code>gperf</code></h3>
+<a name="index-hash-table"></a>
+
+<p>Several options control how the generated C code appears on the standard 
+output.  Two C functions are generated.  They are called <code>hash</code> and 
+<code>in_word_set</code>, although you may modify their names with a command-line 
+option.  Both functions require two arguments, a string, <code>char *</code> 
+<var>str</var>, and a length parameter, <code>int</code> <var>len</var>.  Their default 
+function prototypes are as follows:
+</p>
+<dl>
+<dt><a name="index-hash"></a>Function: <em>unsigned int</em> <strong>hash</strong> <em>(const char * <var>str</var>, unsigned int <var>len</var>)</em></dt>
+<dd><p>By default, the generated <code>hash</code> function returns an integer value
+created by adding <var>len</var> to several user-specified <var>str</var> byte
+positions indexed into an <em>associated values</em> table stored in a
+local static array.  The associated values table is constructed
+internally by <code>gperf</code> and later output as a static local C array
+called &lsquo;<samp>hash_table</samp>&rsquo;.  The relevant selected positions (i.e. indices
+into <var>str</var>) are specified via the &lsquo;<samp>-k</samp>&rsquo; option when running
+<code>gperf</code>, as detailed in the <em>Options</em> section below (see <a href="#Options">Options</a>).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-in_005fword_005fset"></a>Function: <em></em> <strong>in_word_set</strong> <em>(const char * <var>str</var>, unsigned int <var>len</var>)</em></dt>
+<dd><p>If <var>str</var> is in the keyword set, returns a pointer to that
+keyword.  More exactly, if the option &lsquo;<samp>-t</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) was given, it returns
+a pointer to the matching keyword&rsquo;s structure.  Otherwise it returns
+<code>NULL</code>.
+</p></dd></dl>
+
+<p>If the option &lsquo;<samp>-c</samp>&rsquo; (or, equivalently, the &lsquo;<samp>%compare-strncmp</samp>&rsquo;
+declaration) is not used, <var>str</var> must be a NUL terminated
+string of exactly length <var>len</var>.  If &lsquo;<samp>-c</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%compare-strncmp</samp>&rsquo; declaration) is used, <var>str</var> must
+simply be an array of <var>len</var> bytes and does not need to be NUL
+terminated.
+</p>
+<p>The code generated for these two functions is affected by the following
+options:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>-t</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--struct-type</samp>&rsquo;</dt>
+<dd><p>Make use of the user-defined <code>struct</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-S <var>total-switch-statements</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--switch=<var>total-switch-statements</var></samp>&rsquo;</dt>
+<dd><a name="index-switch"></a>
+<p>Generate 1 or more C <code>switch</code> statement rather than use a large,
+(and potentially sparse) static array.  Although the exact time and
+space savings of this approach vary according to your C compiler&rsquo;s
+degree of optimization, this method often results in smaller and faster
+code.
+</p></dd>
+</dl>
+
+<p>If the &lsquo;<samp>-t</samp>&rsquo; and &lsquo;<samp>-S</samp>&rsquo; options (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; and &lsquo;<samp>%switch</samp>&rsquo; declarations) are omitted, the default
+action
+is to generate a <code>char *</code> array containing the keywords, together with
+additional empty strings used for padding the array.  By experimenting
+with the various input and output options, and timing the resulting C
+code, you can determine the best option choices for different keyword
+set characteristics.
+</p>
+<hr>
+<a name="Binary-Strings"></a>
+<div class="header">
+<p>
+Next: <a href="#Output-Copyright" accesskey="n" rel="next">Output Copyright</a>, Previous: <a href="#Output-Format" accesskey="p" rel="prev">Output Format</a>, Up: <a href="#Description" accesskey="u" rel="up">Description</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Use-of-NUL-bytes"></a>
+<h3 class="section">3.3 Use of NUL bytes</h3>
+<a name="index-NUL"></a>
+
+<p>By default, the code generated by <code>gperf</code> operates on zero
+terminated strings, the usual representation of strings in C.  This means
+that the keywords in the input file must not contain NUL bytes,
+and the <var>str</var> argument passed to <code>hash</code> or <code>in_word_set</code>
+must be NUL terminated and have exactly length <var>len</var>.
+</p>
+<p>If option &lsquo;<samp>-c</samp>&rsquo; (or, equivalently, the &lsquo;<samp>%compare-strncmp</samp>&rsquo;
+declaration) is used, then the <var>str</var> argument does not need
+to be NUL terminated.  The code generated by <code>gperf</code> will only
+access the first <var>len</var>, not <var>len+1</var>, bytes starting at <var>str</var>.
+However, the keywords in the input file still must not contain NUL
+bytes.
+</p>
+<p>If option &lsquo;<samp>-l</samp>&rsquo; (or, equivalently, the &lsquo;<samp>%compare-lengths</samp>&rsquo;
+declaration) is used, then the hash table performs binary
+comparison.  The keywords in the input file may contain NUL bytes,
+written in string syntax as <code>\000</code> or <code>\x00</code>, and the code
+generated by <code>gperf</code> will treat NUL like any other byte.
+Also, in this case the &lsquo;<samp>-c</samp>&rsquo; option (or, equivalently, the
+&lsquo;<samp>%compare-strncmp</samp>&rsquo; declaration) is ignored.
+</p>
+<hr>
+<a name="Output-Copyright"></a>
+<div class="header">
+<p>
+Previous: <a href="#Binary-Strings" accesskey="p" rel="prev">Binary Strings</a>, Up: <a href="#Description" accesskey="u" rel="up">Description</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="The-Copyright-of-the-Output"></a>
+<h3 class="section">3.4 The Copyright of the Output</h3>
+<a name="index-Copyright"></a>
+
+<p><code>gperf</code> is under GPL, but that does not cause the output produced
+by <code>gperf</code> to be under GPL.  The reason is that the output contains
+only small pieces of text that come directly from <code>gperf</code>&rsquo;s source
+code &ndash; only about 7 lines long, too small for being significant &ndash;, and
+therefore the output is not a &ldquo;work based on <code>gperf</code>&rdquo; (in the
+sense of the GPL version 3).
+</p>
+<p>On the other hand, the output produced by <code>gperf</code> contains
+essentially all of the input file.  Therefore the output is a
+&ldquo;derivative work&rdquo; of the input (in the sense of U.S. copyright law);
+and its copyright status depends on the copyright of the input.  For most
+software licenses, the result is that the the output is under the same
+license, with the same copyright holder, as the input that was passed to
+<code>gperf</code>.
+</p>
+<hr>
+<a name="Options"></a>
+<div class="header">
+<p>
+Next: <a href="#Bugs" accesskey="n" rel="next">Bugs</a>, Previous: <a href="#Description" accesskey="p" rel="prev">Description</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Invoking-gperf"></a>
+<h2 class="chapter">4 Invoking <code>gperf</code></h2>
+
+<p>There are <em>many</em> options to <code>gperf</code>.  They were added to make
+the program more convenient for use with real applications.  &ldquo;On-line&rdquo;
+help is readily available via the &lsquo;<samp>--help</samp>&rsquo; option.  Here is the
+complete list of options.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Output-File" accesskey="1">Output File</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying the Location of the Output File
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Input-Details" accesskey="2">Input Details</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options that affect Interpretation of the Input File
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Language" accesskey="3">Output Language</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying the Language for the Output Code
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Output-Details" accesskey="4">Output Details</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Fine tuning Details in the Output Code
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Algorithmic-Details" accesskey="5">Algorithmic Details</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Changing the Algorithms employed by <code>gperf</code>
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Verbosity" accesskey="6">Verbosity</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Informative Output
+</td></tr>
+</table>
+
+<hr>
+<a name="Output-File"></a>
+<div class="header">
+<p>
+Next: <a href="#Input-Details" accesskey="n" rel="next">Input Details</a>, Previous: <a href="#Options" accesskey="p" rel="prev">Options</a>, Up: <a href="#Options" accesskey="u" rel="up">Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Specifying-the-Location-of-the-Output-File"></a>
+<h3 class="section">4.1 Specifying the Location of the Output File</h3>
+
+<dl compact="compact">
+<dt>&lsquo;<samp>--output-file=<var>file</var></samp>&rsquo;</dt>
+<dd><p>Allows you to specify the name of the file to which the output is written to.
+</p></dd>
+</dl>
+
+<p>The results are written to standard output if no output file is specified
+or if it is &lsquo;<samp>-</samp>&rsquo;.
+</p>
+<hr>
+<a name="Input-Details"></a>
+<div class="header">
+<p>
+Next: <a href="#Output-Language" accesskey="n" rel="next">Output Language</a>, Previous: <a href="#Output-File" accesskey="p" rel="prev">Output File</a>, Up: <a href="#Options" accesskey="u" rel="up">Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Options-that-affect-Interpretation-of-the-Input-File"></a>
+<h3 class="section">4.2 Options that affect Interpretation of the Input File</h3>
+
+<p>These options are also available as declarations in the input file
+(see <a href="#Gperf-Declarations">Gperf Declarations</a>).
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>-e <var>keyword-delimiter-list</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--delimiters=<var>keyword-delimiter-list</var></samp>&rsquo;</dt>
+<dd><a name="index-Delimiters"></a>
+<p>Allows you to provide a string containing delimiters used to
+separate keywords from their attributes.  The default is &quot;,&quot;.  This
+option is essential if you want to use keywords that have embedded
+commas or newlines.  One useful trick is to use -e&rsquo;TAB&rsquo;, where TAB is
+the literal tab character.
+</p>
+</dd>
+<dt>&lsquo;<samp>-t</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--struct-type</samp>&rsquo;</dt>
+<dd><p>Allows you to include a <code>struct</code> type declaration for generated
+code.  Any text before a pair of consecutive &lsquo;<samp>%%</samp>&rsquo; is considered
+part of the type declaration.  Keywords and additional fields may follow
+this, one group of fields per line.  A set of examples for generating
+perfect hash tables and functions for Ada, C, C++, Pascal, Modula 2,
+Modula 3 and JavaScript reserved words are distributed with this release.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ignore-case</samp>&rsquo;</dt>
+<dd><p>Consider upper and lower case ASCII characters as equivalent.  The string
+comparison will use a case insignificant character comparison.  Note that
+locale dependent case mappings are ignored.  This option is therefore not
+suitable if a properly internationalized or locale aware case mapping
+should be used.  (For example, in a Turkish locale, the upper case equivalent
+of the lowercase ASCII letter &lsquo;<samp>i</samp>&rsquo; is the non-ASCII character
+&lsquo;<samp>capital i with dot above</samp>&rsquo;.)  For this case, it is better to apply
+an uppercase or lowercase conversion on the string before passing it to
+the <code>gperf</code> generated function.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Output-Language"></a>
+<div class="header">
+<p>
+Next: <a href="#Output-Details" accesskey="n" rel="next">Output Details</a>, Previous: <a href="#Input-Details" accesskey="p" rel="prev">Input Details</a>, Up: <a href="#Options" accesskey="u" rel="up">Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Options-to-specify-the-Language-for-the-Output-Code"></a>
+<h3 class="section">4.3 Options to specify the Language for the Output Code</h3>
+
+<p>These options are also available as declarations in the input file
+(see <a href="#Gperf-Declarations">Gperf Declarations</a>).
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>-L <var>generated-language-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--language=<var>generated-language-name</var></samp>&rsquo;</dt>
+<dd><p>Instructs <code>gperf</code> to generate code in the language specified by the
+option&rsquo;s argument.  Languages handled are currently:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>KR-C</samp>&rsquo;</dt>
+<dd><p>Old-style K&amp;R C.  This language is understood by old-style C compilers and
+ANSI C compilers, but ANSI C compilers may flag warnings (or even errors)
+because of lacking &lsquo;<samp>const</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>C</samp>&rsquo;</dt>
+<dd><p>Common C.  This language is understood by ANSI C compilers, and also by
+old-style C compilers, provided that you <code>#define const</code> to empty
+for compilers which don&rsquo;t know about this keyword.
+</p>
+</dd>
+<dt>&lsquo;<samp>ANSI-C</samp>&rsquo;</dt>
+<dd><p>ANSI C.  This language is understood by ANSI C compilers and C++ compilers.
+</p>
+</dd>
+<dt>&lsquo;<samp>C++</samp>&rsquo;</dt>
+<dd><p>C++.  This language is understood by C++ compilers.
+</p></dd>
+</dl>
+
+<p>The default is C.
+</p>
+</dd>
+<dt>&lsquo;<samp>-a</samp>&rsquo;</dt>
+<dd><p>This option is supported for compatibility with previous releases of
+<code>gperf</code>.  It does not do anything.
+</p>
+</dd>
+<dt>&lsquo;<samp>-g</samp>&rsquo;</dt>
+<dd><p>This option is supported for compatibility with previous releases of
+<code>gperf</code>.  It does not do anything.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Output-Details"></a>
+<div class="header">
+<p>
+Next: <a href="#Algorithmic-Details" accesskey="n" rel="next">Algorithmic Details</a>, Previous: <a href="#Output-Language" accesskey="p" rel="prev">Output Language</a>, Up: <a href="#Options" accesskey="u" rel="up">Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Options-for-fine-tuning-Details-in-the-Output-Code"></a>
+<h3 class="section">4.4 Options for fine tuning Details in the Output Code</h3>
+
+<p>Most of these options are also available as declarations in the input file
+(see <a href="#Gperf-Declarations">Gperf Declarations</a>).
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>-K <var>slot-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--slot-name=<var>slot-name</var></samp>&rsquo;</dt>
+<dd><a name="index-Slot-name"></a>
+<p>This option is only useful when option &lsquo;<samp>-t</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) has been given.
+By default, the program assumes the structure component identifier for
+the keyword is &lsquo;<samp>name</samp>&rsquo;.  This option allows an arbitrary choice of
+identifier for this component, although it still must occur as the first
+field in your supplied <code>struct</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-F <var>initializers</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--initializer-suffix=<var>initializers</var></samp>&rsquo;</dt>
+<dd><a name="index-Initializers"></a>
+<p>This option is only useful when option &lsquo;<samp>-t</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) has been given.
+It permits to specify initializers for the structure members following
+<var>slot-name</var> in empty hash table entries.  The list of initializers
+should start with a comma.  By default, the emitted code will
+zero-initialize structure members following <var>slot-name</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-H <var>hash-function-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--hash-function-name=<var>hash-function-name</var></samp>&rsquo;</dt>
+<dd><p>Allows you to specify the name for the generated hash function.  Default
+name is &lsquo;<samp>hash</samp>&rsquo;.  This option permits the use of two hash tables in
+the same file.
+</p>
+</dd>
+<dt>&lsquo;<samp>-N <var>lookup-function-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--lookup-function-name=<var>lookup-function-name</var></samp>&rsquo;</dt>
+<dd><p>Allows you to specify the name for the generated lookup function.
+Default name is &lsquo;<samp>in_word_set</samp>&rsquo;.  This option permits multiple
+generated hash functions to be used in the same application.
+</p>
+</dd>
+<dt>&lsquo;<samp>-Z <var>class-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--class-name=<var>class-name</var></samp>&rsquo;</dt>
+<dd><a name="index-Class-name"></a>
+<p>This option is only useful when option &lsquo;<samp>-L C++</samp>&rsquo; (or, equivalently,
+the &lsquo;<samp>%language=C++</samp>&rsquo; declaration) has been given.  It
+allows you to specify the name of generated C++ class.  Default name is
+<code>Perfect_Hash</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-7</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--seven-bit</samp>&rsquo;</dt>
+<dd><p>This option specifies that all strings that will be passed as arguments
+to the generated hash function and the generated lookup function will
+solely consist of 7-bit ASCII characters (bytes in the range 0..127).
+(Note that the ANSI C functions <code>isalnum</code> and <code>isgraph</code> do
+<em>not</em> guarantee that a byte is in this range.  Only an explicit
+test like &lsquo;<samp>c &gt;= 'A' &amp;&amp; c &lt;= 'Z'</samp>&rsquo; guarantees this.) This was the
+default in versions of <code>gperf</code> earlier than 2.7; now the default is
+to support 8-bit and multibyte characters.
+</p>
+</dd>
+<dt>&lsquo;<samp>-l</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--compare-lengths</samp>&rsquo;</dt>
+<dd><p>Compare keyword lengths before trying a string comparison.  This option
+is mandatory for binary comparisons (see <a href="#Binary-Strings">Binary Strings</a>).  It also might
+cut down on the number of string comparisons made during the lookup, since
+keywords with different lengths are never compared via <code>strcmp</code>.
+However, using &lsquo;<samp>-l</samp>&rsquo; might greatly increase the size of the
+generated C code if the lookup table range is large (which implies that
+the switch option &lsquo;<samp>-S</samp>&rsquo; or &lsquo;<samp>%switch</samp>&rsquo; is not enabled), since the length
+table contains as many elements as there are entries in the lookup table.
+</p>
+</dd>
+<dt>&lsquo;<samp>-c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--compare-strncmp</samp>&rsquo;</dt>
+<dd><p>Generates C code that uses the <code>strncmp</code> function to perform
+string comparisons.  The default action is to use <code>strcmp</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-C</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--readonly-tables</samp>&rsquo;</dt>
+<dd><p>Makes the contents of all generated lookup tables constant, i.e.,
+&ldquo;readonly&rdquo;.  Many compilers can generate more efficient code for this
+by putting the tables in readonly memory.
+</p>
+</dd>
+<dt>&lsquo;<samp>-E</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--enum</samp>&rsquo;</dt>
+<dd><p>Define constant values using an enum local to the lookup function rather
+than with #defines.  This also means that different lookup functions can
+reside in the same file.  Thanks to James Clark <code>&lt;jjc@ai.mit.edu&gt;</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-I</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--includes</samp>&rsquo;</dt>
+<dd><p>Include the necessary system include file, <code>&lt;string.h&gt;</code>, at the
+beginning of the code.  By default, this is not done; the user must
+include this header file himself to allow compilation of the code.
+</p>
+</dd>
+<dt>&lsquo;<samp>-G</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--global-table</samp>&rsquo;</dt>
+<dd><p>Generate the static table of keywords as a static global variable,
+rather than hiding it inside of the lookup function (which is the
+default behavior).
+</p>
+</dd>
+<dt>&lsquo;<samp>-P</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--pic</samp>&rsquo;</dt>
+<dd><p>Optimize the generated table for inclusion in shared libraries.  This
+reduces the startup time of programs using a shared library containing
+the generated code.  If the option &lsquo;<samp>-t</samp>&rsquo; (or, equivalently, the
+&lsquo;<samp>%struct-type</samp>&rsquo; declaration) is also given, the first field of the
+user-defined struct must be of type &lsquo;<samp>int</samp>&rsquo;, not &lsquo;<samp>char *</samp>&rsquo;, because
+it will contain offsets into the string pool instead of actual strings.
+To convert such an offset to a string, you can use the expression
+&lsquo;<samp>stringpool + <var>o</var></samp>&rsquo;, where <var>o</var> is the offset.  The string pool
+name can be changed through the option &lsquo;<samp>--string-pool-name</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>-Q <var>string-pool-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--string-pool-name=<var>string-pool-name</var></samp>&rsquo;</dt>
+<dd><p>Allows you to specify the name of the generated string pool created by
+option &lsquo;<samp>-P</samp>&rsquo;.  The default name is &lsquo;<samp>stringpool</samp>&rsquo;.  This option
+permits the use of two hash tables in the same file, with &lsquo;<samp>-P</samp>&rsquo; and
+even when the option &lsquo;<samp>-G</samp>&rsquo; (or, equivalently, the &lsquo;<samp>%global-table</samp>&rsquo;
+declaration) is given.
+</p>
+</dd>
+<dt>&lsquo;<samp>--null-strings</samp>&rsquo;</dt>
+<dd><p>Use NULL strings instead of empty strings for empty keyword table entries.
+This reduces the startup time of programs using a shared library containing
+the generated code (but not as much as option &lsquo;<samp>-P</samp>&rsquo;), at the expense
+of one more test-and-branch instruction at run time.
+</p>
+</dd>
+<dt>&lsquo;<samp>-W <var>hash-table-array-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--word-array-name=<var>hash-table-array-name</var></samp>&rsquo;</dt>
+<dd><a name="index-Array-name"></a>
+<p>Allows you to specify the name for the generated array containing the
+hash table.  Default name is &lsquo;<samp>wordlist</samp>&rsquo;.  This option permits the
+use of two hash tables in the same file, even when the option &lsquo;<samp>-G</samp>&rsquo;
+(or, equivalently, the &lsquo;<samp>%global-table</samp>&rsquo; declaration) is given.
+</p>
+</dd>
+<dt>&lsquo;<samp>--length-table-name=<var>length-table-array-name</var></samp>&rsquo;</dt>
+<dd><a name="index-Array-name-1"></a>
+<p>Allows you to specify the name for the generated array containing the
+length table.  Default name is &lsquo;<samp>lengthtable</samp>&rsquo;.  This option permits the
+use of two length tables in the same file, even when the option &lsquo;<samp>-G</samp>&rsquo;
+(or, equivalently, the &lsquo;<samp>%global-table</samp>&rsquo; declaration) is given.
+</p>
+</dd>
+<dt>&lsquo;<samp>-S <var>total-switch-statements</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--switch=<var>total-switch-statements</var></samp>&rsquo;</dt>
+<dd><a name="index-switch-1"></a>
+<p>Causes the generated C code to use a <code>switch</code> statement scheme,
+rather than an array lookup table.  This can lead to a reduction in both
+time and space requirements for some input files.  The argument to this
+option determines how many <code>switch</code> statements are generated.  A
+value of 1 generates 1 <code>switch</code> containing all the elements, a
+value of 2 generates 2 tables with 1/2 the elements in each
+<code>switch</code>, etc.  This is useful since many C compilers cannot
+correctly generate code for large <code>switch</code> statements.  This option
+was inspired in part by Keith Bostic&rsquo;s original C program.
+</p>
+</dd>
+<dt>&lsquo;<samp>-T</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--omit-struct-type</samp>&rsquo;</dt>
+<dd><p>Prevents the transfer of the type declaration to the output file.  Use
+this option if the type is already defined elsewhere.
+</p>
+</dd>
+<dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
+<dd><p>This option is supported for compatibility with previous releases of
+<code>gperf</code>.  It does not do anything.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Algorithmic-Details"></a>
+<div class="header">
+<p>
+Next: <a href="#Verbosity" accesskey="n" rel="next">Verbosity</a>, Previous: <a href="#Output-Details" accesskey="p" rel="prev">Output Details</a>, Up: <a href="#Options" accesskey="u" rel="up">Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Options-for-changing-the-Algorithms-employed-by-gperf"></a>
+<h3 class="section">4.5 Options for changing the Algorithms employed by <code>gperf</code></h3>
+
+<dl compact="compact">
+<dt>&lsquo;<samp>-k <var>selected-byte-positions</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--key-positions=<var>selected-byte-positions</var></samp>&rsquo;</dt>
+<dd><p>Allows selection of the byte positions used in the keywords&rsquo;
+hash function.  The allowable choices range between 1-255, inclusive.
+The positions are separated by commas, e.g., &lsquo;<samp>-k 9,4,13,14</samp>&rsquo;;
+ranges may be used, e.g., &lsquo;<samp>-k 2-7</samp>&rsquo;; and positions may occur
+in any order.  Furthermore, the wildcard &rsquo;*&rsquo; causes the generated
+hash function to consider <strong>all</strong> byte positions in each keyword,
+whereas &rsquo;$&rsquo; instructs the hash function to use the &ldquo;final byte&rdquo;
+of a keyword (this is the only way to use a byte position greater than
+255, incidentally).
+</p>
+<p>For instance, the option &lsquo;<samp>-k 1,2,4,6-10,'$'</samp>&rsquo; generates a hash
+function that considers positions 1,2,4,6,7,8,9,10, plus the last
+byte in each keyword (which may be at a different position for each
+keyword, obviously).  Keywords
+with length less than the indicated byte positions work properly, since
+selected byte positions exceeding the keyword length are simply not
+referenced in the hash function.
+</p>
+<p>This option is not normally needed since version 2.8 of <code>gperf</code>;
+the default byte positions are computed depending on the keyword set,
+through a search that minimizes the number of byte positions.
+</p>
+</dd>
+<dt>&lsquo;<samp>-D</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--duplicates</samp>&rsquo;</dt>
+<dd><a name="index-Duplicates"></a>
+<p>Handle keywords whose selected byte sets hash to duplicate values.
+Duplicate hash values can occur if a set of keywords has the same names, but
+possesses different attributes, or if the selected byte positions are not well
+chosen.  With the -D option <code>gperf</code> treats all these keywords as
+part of an equivalence class and generates a perfect hash function with
+multiple comparisons for duplicate keywords.  It is up to you to completely
+disambiguate the keywords by modifying the generated C code.  However,
+<code>gperf</code> helps you out by organizing the output.
+</p>
+<p>Using this option usually means that the generated hash function is no
+longer perfect.  On the other hand, it permits <code>gperf</code> to work on
+keyword sets that it otherwise could not handle.
+</p>
+</dd>
+<dt>&lsquo;<samp>-m <var>iterations</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--multiple-iterations=<var>iterations</var></samp>&rsquo;</dt>
+<dd><p>Perform multiple choices of the &lsquo;<samp>-i</samp>&rsquo; and &lsquo;<samp>-j</samp>&rsquo; values, and
+choose the best results.  This increases the running time by a factor of
+<var>iterations</var> but does a good job minimizing the generated table size.
+</p>
+</dd>
+<dt>&lsquo;<samp>-i <var>initial-value</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--initial-asso=<var>initial-value</var></samp>&rsquo;</dt>
+<dd><p>Provides an initial <var>value</var> for the associate values array.  Default
+is 0.  Increasing the initial value helps inflate the final table size,
+possibly leading to more time efficient keyword lookups.  Note that this
+option is not particularly useful when &lsquo;<samp>-S</samp>&rsquo; (or, equivalently,
+&lsquo;<samp>%switch</samp>&rsquo;) is used.  Also,
+&lsquo;<samp>-i</samp>&rsquo; is overridden when the &lsquo;<samp>-r</samp>&rsquo; option is used.
+</p>
+</dd>
+<dt>&lsquo;<samp>-j <var>jump-value</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--jump=<var>jump-value</var></samp>&rsquo;</dt>
+<dd><a name="index-Jump-value"></a>
+<p>Affects the &ldquo;jump value&rdquo;, i.e., how far to advance the associated
+byte value upon collisions.  <var>Jump-value</var> is rounded up to an
+odd number, the default is 5.  If the <var>jump-value</var> is 0 <code>gperf</code>
+jumps by random amounts.
+</p>
+</dd>
+<dt>&lsquo;<samp>-n</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-strlen</samp>&rsquo;</dt>
+<dd><p>Instructs the generator not to include the length of a keyword when
+computing its hash value.  This may save a few assembly instructions in
+the generated lookup table.
+</p>
+</dd>
+<dt>&lsquo;<samp>-r</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--random</samp>&rsquo;</dt>
+<dd><p>Utilizes randomness to initialize the associated values table.  This
+frequently generates solutions faster than using deterministic
+initialization (which starts all associated values at 0).  Furthermore,
+using the randomization option generally increases the size of the
+table.
+</p>
+</dd>
+<dt>&lsquo;<samp>-s <var>size-multiple</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--size-multiple=<var>size-multiple</var></samp>&rsquo;</dt>
+<dd><p>Affects the size of the generated hash table.  The numeric argument for
+this option indicates &ldquo;how many times larger or smaller&rdquo; the maximum
+associated value range should be, in relationship to the number of keywords.
+It can be written as an integer, a floating-point number or a fraction.
+For example, a value of 3 means &ldquo;allow the maximum associated value to be
+about 3 times larger than the number of input keywords&rdquo;.
+Conversely, a value of 1/3 means &ldquo;allow the maximum associated value to
+be about 3 times smaller than the number of input keywords&rdquo;.  Values
+smaller than 1 are useful for limiting the overall size of the generated hash
+table, though the option &lsquo;<samp>-m</samp>&rsquo; is better at this purpose.
+</p>
+<p>If &lsquo;generate switch&rsquo; option &lsquo;<samp>-S</samp>&rsquo; (or, equivalently, &lsquo;<samp>%switch</samp>&rsquo;) is
+<em>not</em> enabled, the maximum
+associated value influences the static array table size, and a larger
+table should decrease the time required for an unsuccessful search, at
+the expense of extra table space.
+</p>
+<p>The default value is 1, thus the default maximum associated value about
+the same size as the number of keywords (for efficiency, the maximum
+associated value is always rounded up to a power of 2).  The actual
+table size may vary somewhat, since this technique is essentially a
+heuristic.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Verbosity"></a>
+<div class="header">
+<p>
+Previous: <a href="#Algorithmic-Details" accesskey="p" rel="prev">Algorithmic Details</a>, Up: <a href="#Options" accesskey="u" rel="up">Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Informative-Output"></a>
+<h3 class="section">4.6 Informative Output</h3>
+
+<dl compact="compact">
+<dt>&lsquo;<samp>-h</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--help</samp>&rsquo;</dt>
+<dd><p>Prints a short summary on the meaning of each program option.  Aborts
+further program execution.
+</p>
+</dd>
+<dt>&lsquo;<samp>-v</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--version</samp>&rsquo;</dt>
+<dd><p>Prints out the current version number.
+</p>
+</dd>
+<dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--debug</samp>&rsquo;</dt>
+<dd><p>Enables the debugging option.  This produces verbose diagnostics to
+&ldquo;standard error&rdquo; when <code>gperf</code> is executing.  It is useful both for
+maintaining the program and for determining whether a given set of
+options is actually speeding up the search for a solution.  Some useful
+information is dumped at the end of the program when the &lsquo;<samp>-d</samp>&rsquo;
+option is enabled.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Bugs"></a>
+<div class="header">
+<p>
+Next: <a href="#Projects" accesskey="n" rel="next">Projects</a>, Previous: <a href="#Options" accesskey="p" rel="prev">Options</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Known-Bugs-and-Limitations-with-gperf"></a>
+<h2 class="chapter">5 Known Bugs and Limitations with <code>gperf</code></h2>
+
+<p>The following are some limitations with the current release of
+<code>gperf</code>:
+</p>
+<ul>
+<li> The <code>gperf</code> utility is tuned to execute quickly, and works quickly
+for small to medium size data sets (around 1000 keywords).  It is
+extremely useful for maintaining perfect hash functions for compiler
+keyword sets.  Several recent enhancements now enable <code>gperf</code> to
+work efficiently on much larger keyword sets (over 15,000 keywords).
+When processing large keyword sets it helps greatly to have over 8 megs
+of RAM.
+
+</li><li> The size of the generate static keyword array can get <em>extremely</em>
+large if the input keyword file is large or if the keywords are quite
+similar.  This tends to slow down the compilation of the generated C
+code, and <em>greatly</em> inflates the object code size.  If this
+situation occurs, consider using the &lsquo;<samp>-S</samp>&rsquo; option to reduce data
+size, potentially increasing keyword recognition time a negligible
+amount.  Since many C compilers cannot correctly generate code for
+large switch statements it is important to qualify the <var>-S</var> option
+with an appropriate numerical argument that controls the number of
+switch statements generated.
+
+</li><li> The maximum number of selected byte positions has an
+arbitrary limit of 255.  This restriction should be removed, and if
+anyone considers this a problem write me and let me know so I can remove
+the constraint.
+</li></ul>
+
+<hr>
+<a name="Projects"></a>
+<div class="header">
+<p>
+Next: <a href="#Bibliography" accesskey="n" rel="next">Bibliography</a>, Previous: <a href="#Bugs" accesskey="p" rel="prev">Bugs</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Things-Still-Left-to-Do"></a>
+<h2 class="chapter">6 Things Still Left to Do</h2>
+
+<p>It should be &ldquo;relatively&rdquo; easy to replace the current perfect hash
+function algorithm with a more exhaustive approach; the perfect hash
+module is essential independent from other program modules.  Additional
+worthwhile improvements include:
+</p>
+<ul>
+<li> Another useful extension involves modifying the program to generate
+&ldquo;minimal&rdquo; perfect hash functions (under certain circumstances, the
+current version can be rather extravagant in the generated table size).
+This is mostly of theoretical interest, since a sparse table
+often produces faster lookups, and use of the &lsquo;<samp>-S</samp>&rsquo; <code>switch</code>
+option can minimize the data size, at the expense of slightly longer
+lookups (note that the gcc compiler generally produces good code for
+<code>switch</code> statements, reducing the need for more complex schemes).
+
+</li><li> In addition to improving the algorithm, it would also be useful to
+generate an Ada package as the code output, in addition to the current
+C and C++ routines.
+</li></ul>
+
+
+<hr>
+<a name="Bibliography"></a>
+<div class="header">
+<p>
+Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previous: <a href="#Projects" accesskey="p" rel="prev">Projects</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Bibliography-1"></a>
+<h2 class="chapter">7 Bibliography</h2>
+
+<p>[1] Chang, C.C.: <i>A Scheme for Constructing Ordered Minimal Perfect
+Hashing Functions</i> Information Sciences 39(1986), 187-195.
+</p>
+<p>[2] Cichelli, Richard J. <i>Author&rsquo;s Response to &ldquo;On Cichelli&rsquo;s Minimal Perfect Hash
+Functions Method&rdquo;</i> Communications of the ACM, 23, 12(December 1980), 729.
+</p>
+<p>[3] Cichelli, Richard J. <i>Minimal Perfect Hash Functions Made Simple</i>
+Communications of the ACM, 23, 1(January 1980), 17-19.
+</p>
+<p>[4] Cook, C. R. and Oldehoeft, R.R. <i>A Letter Oriented Minimal
+Perfect Hashing Function</i> SIGPLAN Notices, 17, 9(September 1982), 18-27.
+</p>
+<p>[5] Cormack, G. V. and Horspool, R. N. S. and Kaiserwerth, M.
+<i>Practical Perfect Hashing</i> Computer Journal, 28, 1(January 1985), 54-58.
+</p>
+<p>[6] Jaeschke, G. <i>Reciprocal Hashing: A Method for Generating Minimal
+Perfect Hashing Functions</i> Communications of the ACM, 24, 12(December
+1981), 829-833.
+</p>
+<p>[7] Jaeschke, G. and Osterburg, G. <i>On Cichelli&rsquo;s Minimal Perfect
+Hash Functions Method</i> Communications of the ACM, 23, 12(December 1980),
+728-729.
+</p>
+<p>[8] Sager, Thomas J. <i>A Polynomial Time Generator for Minimal Perfect
+Hash Functions</i> Communications of the ACM, 28, 5(December 1985), 523-532
+</p>
+<p>[9] Schmidt, Douglas C. <i>GPERF: A Perfect Hash Function Generator</i>
+Second USENIX C++ Conference Proceedings, April 1990.
+</p>
+<p>[10] Schmidt, Douglas C. <i>GPERF: A Perfect Hash Function Generator</i>
+C++ Report, SIGS 10 10 (November/December 1998).
+</p>
+<p>[11] Sebesta, R.W. and Taylor, M.A. <i>Minimal Perfect Hash Functions
+for Reserved Word Lists</i>  SIGPLAN Notices, 20, 12(September 1985), 47-53.
+</p>
+<p>[12] Sprugnoli, R. <i>Perfect Hashing Functions: A Single Probe
+Retrieving Method for Static Sets</i> Communications of the ACM, 20
+11(November 1977), 841-850.
+</p>
+<p>[13] Stallman, Richard M. <i>Using and Porting GNU CC</i> Free Software Foundation,
+1988.
+</p>
+<p>[14] Stroustrup, Bjarne <i>The C++ Programming Language.</i> Addison-Wesley, 1986.
+</p>
+<p>[15] Tiemann, Michael D. <i>User&rsquo;s Guide to GNU C++</i> Free Software
+Foundation, 1989.
+</p>
+<hr>
+<a name="Concept-Index"></a>
+<div class="header">
+<p>
+Previous: <a href="#Bibliography" accesskey="p" rel="prev">Bibliography</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Concept-Index-1"></a>
+<h2 class="unnumbered">Concept Index</h2>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-Index_cp_symbol-1"><b>%</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Concept-Index_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_symbol-1">%</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025_0025">&lsquo;<samp>%%</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#User_002dsupplied-Struct">User-supplied Struct</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_00257bit">&lsquo;<samp>%7bit</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025compare_002dlengths">&lsquo;<samp>%compare-lengths</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025compare_002dstrncmp">&lsquo;<samp>%compare-strncmp</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-class_002dname">&lsquo;<samp>%define class-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-hash_002dfunction_002dname">&lsquo;<samp>%define hash-function-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-initializer_002dsuffix">&lsquo;<samp>%define initializer-suffix</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-length_002dtable_002dname">&lsquo;<samp>%define length-table-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-lookup_002dfunction_002dname">&lsquo;<samp>%define lookup-function-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-slot_002dname">&lsquo;<samp>%define slot-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-string_002dpool_002dname">&lsquo;<samp>%define string-pool-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025define-word_002darray_002dname">&lsquo;<samp>%define word-array-name</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025delimiters">&lsquo;<samp>%delimiters</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025enum">&lsquo;<samp>%enum</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025global_002dtable">&lsquo;<samp>%global-table</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025ignore_002dcase">&lsquo;<samp>%ignore-case</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025includes">&lsquo;<samp>%includes</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025language">&lsquo;<samp>%language</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025null_002dstrings">&lsquo;<samp>%null-strings</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025omit_002dstruct_002dtype">&lsquo;<samp>%omit-struct-type</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025pic">&lsquo;<samp>%pic</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025readonly_002dtables">&lsquo;<samp>%readonly-tables</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025struct_002dtype">&lsquo;<samp>%struct-type</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025switch">&lsquo;<samp>%switch</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gperf-Declarations">Gperf Declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025_007b">&lsquo;<samp>%{</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#C-Code-Inclusion">C Code Inclusion</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025_007d">&lsquo;<samp>%}</samp>&rsquo;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#C-Code-Inclusion">C Code Inclusion</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Array-name">Array name</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Details">Output Details</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Array-name-1">Array name</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Details">Output Details</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-B">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Bugs">Bugs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Contributors">Contributors</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Class-name">Class name</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Details">Output Details</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Copyright">Copyright</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Copyright">Output Copyright</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Declaration-section">Declaration section</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Input-Format">Input Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Delimiters">Delimiters</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Input-Details">Input Details</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Duplicates">Duplicates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Algorithmic-Details">Algorithmic Details</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Format">Format</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Input-Format">Input Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Functions-section">Functions section</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Input-Format">Input Format</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-H">H</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-hash"><code>hash</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Format">Output Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-hash-table">hash table</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Format">Output Format</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Initializers">Initializers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Details">Output Details</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-in_005fword_005fset"><code>in_word_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Format">Output Format</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-J">J</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Jump-value">Jump value</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Algorithmic-Details">Algorithmic Details</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-K">K</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Keywords-section">Keywords section</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Input-Format">Input Format</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-M">M</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Minimal-perfect-hash-functions">Minimal perfect hash functions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Search-Structures">Search Structures</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-N">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-NUL">NUL</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Binary-Strings">Binary Strings</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Concept-Index_cp_letter-S">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Slot-name">Slot name</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Details">Output Details</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Static-search-structure">Static search structure</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Search-Structures">Search Structures</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-switch"><code>switch</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Format">Output Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-switch-1"><code>switch</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Output-Details">Output Details</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-Index_cp_symbol-1"><b>%</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Concept-Index_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+<hr>
+
+
+
+</body>
+</html>

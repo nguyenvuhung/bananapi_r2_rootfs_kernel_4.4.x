@@ -1,0 +1,8 @@
+I:12294209
+E:ID_MM_CANDIDATE=1
+E:ID_PATH=platform-1b100000.ethernet
+E:ID_PATH_TAG=platform-1b100000_ethernet
+E:ID_NET_DRIVER=mtk_eth_soc
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/eth0
+G:systemd

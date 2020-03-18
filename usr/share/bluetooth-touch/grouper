@@ -1,0 +1,25 @@
+#!/bin/sh -e
+#
+# Bluetooth initialization on grouper
+#
+# Bluetooth initialization job, specifically for the Nexus 7 device (grouper),
+# uses brcm-patchram-plus to patch firmware, set line discipline and write
+# the bluetooth address for the device.
+#
+
+
+env PATCHRAM_ARGS="--patchram /system/etc/firmware/bcm4330.hcd \
+                   --no2bytes \
+                   --scopcm=0,2,0,0,0,0,0,0,0,0 \
+                   --enable_hci \
+                   --enable_lpm \
+                   --baudrate 3000000 --use_baudrate_for_download \
+                   --tosleep=50000"
+
+chmod 0660 /sys/class/rfkill/rfkill0/state
+chmod 0660 /sys/class/rfkill/rfkill0/type
+chgrp dialout /sys/class/rfkill/rfkill0/state
+chgrp dialout /sys/class/rfkill/rfkill0/type
+rfkill unblock bluetooth
+
+/usr/bin/brcm_patchram_plus $PATCHRAM_ARGS /dev/ttyHS2 &

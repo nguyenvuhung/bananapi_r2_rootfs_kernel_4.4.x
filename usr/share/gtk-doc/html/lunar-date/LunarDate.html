@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LunarDate Reference Manual: LunarDate</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="LunarDate Reference Manual">
+<link rel="up" href="ch01.html" title="API Reference">
+<link rel="prev" href="lunar-date-Version-Information.html" title="Version Information">
+<link rel="next" href="object-tree.html" title="Object Hierarchy">
+<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description"> <span class="dim">|</span> 
+                  <a href="#LunarDate.description" class="shortcut">Description</a></span><span id="nav_hierarchy"> <span class="dim">|</span> 
+                  <a href="#LunarDate.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="lunar-date-Version-Information.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="object-tree.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="LunarDate"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="LunarDate.top_of_page"></a>LunarDate</span></h2>
+<p>LunarDate — Chinese Lunar Date Library</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="LunarDate.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="LunarDate.html" title="LunarDate"><span class="returnvalue">LunarDate</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-new" title="lunar_date_new ()">lunar_date_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-solar-date" title="lunar_date_set_solar_date ()">lunar_date_set_solar_date</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-lunar-date" title="lunar_date_set_lunar_date ()">lunar_date_set_lunar_date</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-get-jieri" title="lunar_date_get_jieri ()">lunar_date_get_jieri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-strftime" title="lunar_date_strftime ()">lunar_date_strftime</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-free" title="lunar_date_free ()">lunar_date_free</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="LunarDate.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="LunarDate.html#LunarDate-struct" title="struct LunarDate">LunarDate</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="LunarDate.html#LunarDateError" title="enum LunarDateError">LunarDateError</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="LunarDate.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> LunarDate
+</pre>
+</div>
+<div class="refsect1">
+<a name="LunarDate.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;lunar-date/lunar-date.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="LunarDate.description"></a><h2>Description</h2>
+<p>The <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> provide Chinese lunar date library.</p>
+</div>
+<div class="refsect1">
+<a name="LunarDate.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="lunar-date-new"></a><h3>lunar_date_new ()</h3>
+<pre class="programlisting"><a class="link" href="LunarDate.html" title="LunarDate"><span class="returnvalue">LunarDate</span></a> *
+lunar_date_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Allocates a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> and initializes it. Free the return value with <a class="link" href="LunarDate.html#lunar-date-free" title="lunar_date_free ()"><code class="function">lunar_date_free()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.2.3.8.2.5"></a><h4>Returns</h4>
+<p> a newly-allocated <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-solar-date"></a><h3>lunar_date_set_solar_date ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_solar_date (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                           <em class="parameter"><code><span class="type">GDateYear</span> year</code></em>,
+                           <em class="parameter"><code><span class="type">GDateMonth</span> month</code></em>,
+                           <em class="parameter"><code><span class="type">GDateDay</span> day</code></em>,
+                           <em class="parameter"><code><span class="type">guint8</span> hour</code></em>,
+                           <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Sets the solar year, month, day and the hour for a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.2.3.8.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>year</p></td>
+<td class="parameter_description"><p>year to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>month to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>day to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>hour</p></td>
+<td class="parameter_description"><p>hour to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>location to store the error occuring, or NULL to ignore errors.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-lunar-date"></a><h3>lunar_date_set_lunar_date ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_lunar_date (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                           <em class="parameter"><code><span class="type">GDateYear</span> year</code></em>,
+                           <em class="parameter"><code><span class="type">GDateMonth</span> month</code></em>,
+                           <em class="parameter"><code><span class="type">GDateDay</span> day</code></em>,
+                           <em class="parameter"><code><span class="type">guint8</span> hour</code></em>,
+                           <em class="parameter"><code><span class="type">gboolean</span> isleap</code></em>,
+                           <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Sets the lunar year, month, day and the hour for a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>. If the month is a leap month, you should set the isleap to TRUE.</p>
+<div class="refsect3">
+<a name="id-1.2.3.8.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>year</p></td>
+<td class="parameter_description"><p>year to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>month to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>day to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>hour</p></td>
+<td class="parameter_description"><p>hour to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>isleap</p></td>
+<td class="parameter_description"><p>indicate whether the month is a leap month.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>location to store the error occuring, or <span class="type">NULL</span> to ignore errors.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-get-jieri"></a><h3>lunar_date_get_jieri ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+lunar_date_get_jieri (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                      <em class="parameter"><code>const <span class="type">gchar</span> *delimiter</code></em>);</pre>
+<p>Returns the all holiday of the date, joined with the delimiter. The date must be valid.</p>
+<div class="refsect3">
+<a name="id-1.2.3.8.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>delimiter</p></td>
+<td class="parameter_description"><p>used to join the holidays.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.2.3.8.5.6"></a><h4>Returns</h4>
+<p>  a newly-allocated holiday string of the date.
+This can be changed in  <a class="ulink" href="http://www.freedesktop.org/wiki/Specifications/basedir-spec" target="_top">$XDG_CONFIG_HOME</a>/liblunar/hodiday.dat file.</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-strftime"></a><h3>lunar_date_strftime ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+lunar_date_strftime (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                     <em class="parameter"><code>const <span class="type">char</span> *format</code></em>);</pre>
+<p>使用给定的格式来输出字符串。类似于strftime的用法。可使用的格式及输出如下：</p>
+<p>%(YEAR)年%(MONTH)月%(DAY)%(HOUR)日		公历：大写-&gt;二OO八年一月二十一日</p>
+<p>%(year)年%(month)月%(day)%(hour)日		公历：小写-&gt;2008年1月21日</p>
+<p>%(NIAN)年%(YUE)月%(RI)日%(SHI)时			阴历：大写-&gt;丁亥年腊月十四日，(月份前带"闰"表示闰月)</p>
+<p>%(nian)年%(yue)月%(ri)日%(shi)时			阴历：小写-&gt;2007年12月14日，(月份前带"*"表示闰月)</p>
+<p>%(Y60)年%(M60)月%(D60)日%(H60)时			干支：大写-&gt;丁亥年癸丑月庚申日</p>
+<p>%(Y8)年%(M8)月%(D8)日%(H8)时				八字：大写-&gt;丁亥年癸丑月庚申日</p>
+<p>%(shengxiao)								生肖：猪
+%(jieri)									节日(节日、纪念日、节气等)：立春</p>
+<p>使用%(jieri)时，如果此日没有节日或节气，那么将为空。
+支持自定义节日，只要按照格式修改 <a class="ulink" href="http://www.freedesktop.org/wiki/Specifications/basedir-spec" target="_top">$XDG_CONFIG_HOME</a>/liblunar/hodiday.dat 文件即可。</p>
+<div class="refsect3">
+<a name="id-1.2.3.8.6.13"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>format</p></td>
+<td class="parameter_description"><p>specify the output format. this</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.2.3.8.6.14"></a><h4>Returns</h4>
+<p> a newly-allocated output string, nul-terminated</p>
+<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-free"></a><h3>lunar_date_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_free (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>);</pre>
+<p>Frees a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> returned from <a class="link" href="LunarDate.html#lunar-date-new" title="lunar_date_new ()"><code class="function">lunar_date_new()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.2.3.8.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="LunarDate.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="LunarDate-struct"></a><h3>struct LunarDate</h3>
+<pre class="programlisting">struct LunarDate;</pre>
+<p>All of these fields should be considered read-only.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LunarDateError"></a><h3>enum LunarDateError</h3>
+<div class="refsect3">
+<a name="id-1.2.3.9.3.3"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-INTERNAL:CAPS"></a>LUNAR_DATE_ERROR_INTERNAL</p></td>
+<td class="enum_member_description">
+<p>internal error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-YEAR:CAPS"></a>LUNAR_DATE_ERROR_YEAR</p></td>
+<td class="enum_member_description">
+<p>year setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-MONTH:CAPS"></a>LUNAR_DATE_ERROR_MONTH</p></td>
+<td class="enum_member_description">
+<p>month setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-DAY:CAPS"></a>LUNAR_DATE_ERROR_DAY</p></td>
+<td class="enum_member_description">
+<p>day setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-HOUR:CAPS"></a>LUNAR_DATE_ERROR_HOUR</p></td>
+<td class="enum_member_description">
+<p>hour setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-LEAP:CAPS"></a>LUNAR_DATE_ERROR_LEAP</p></td>
+<td class="enum_member_description">
+<p>isleap setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.20</div>
+</body>
+</html>

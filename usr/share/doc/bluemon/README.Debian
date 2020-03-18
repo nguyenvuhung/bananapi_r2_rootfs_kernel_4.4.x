@@ -1,0 +1,8 @@
+bluemon for Debian
+------------------
+
+Config for the init script is in /etc/default/bluemon. The config is read by
+the init script and passed to the program as parameters, not read by the
+program directly.
+
+ -- Matthew Johnson <debian@matthew.ath.cx>, Tue,  9 Nov 2004 13:28:09 +0000

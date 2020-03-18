@@ -1,0 +1,106 @@
+Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat
+Debianized-By: LI Daobing <lidaobing@gmail.com>
+Debianized-Date: Thu, 24 Apr 2008 22:24:55 +0800
+Original-Source: http://code.google.com/p/liblunar/
+
+Files: debian/*
+Copyright: Copyright 2008 LI Daobing <lidaobing@gmail.com>
+License: GPL-2+
+ On Debian systems, the complete text of the version 2 of GNU General
+ Public License can be found in file "/usr/share/common-licenses/GPL-2".
+
+Files: *
+Copyright: Copyright 2008 yetist <yetist@gmail.com>
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the
+ Free Software Foundation; either version 2 of the License, or (at your
+ option) any later version.
+ .
+ This package is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this package; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ .
+ On Debian systems, the complete text of the version 2 of GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files: tests/test-calendar.c
+Copyright: Copyright 2000 Tony Gale 
+           Copyright 1998 Cesar Miquel, Shawn T. Amundson, Mattias Grönlund
+License: GPL-2+ 
+ On Debian systems, the complete text of the version 2 of GNU General
+ Public License can be found in file "/usr/share/common-licenses/GPL-2".
+
+Files: bindings/python/gclmodule.c
+Copyright: Copyright 1998-2003 James Henstridge
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published
+ by the Free Software Foundation; either version 2.1 of the License, or
+ (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
+ USA.
+ .
+ On Debian systems, the complete text of the version 2.1 of GNU General
+ Lesser Public License can be found in file
+ "/usr/share/common-licenses/LGPL-2.1".
+
+Files: gcl/gcl-calendar.c
+Copyright:
+ Copyright 1998 Cesar Miquel, Shawn T. Amundson and Mattias Groenlund
+ Copyright 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+ Copyright 1995, 1996, 1997, 1998 Steffen Beyer
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Library General Public License as published
+ by the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA
+ 02110-1301 USA
+ .
+ On Debian systems, the complete text of the version 2 of GNU Library
+ Lesser Public License can be found in file
+ "/usr/share/common-licenses/LGPL-2".
+
+Files: gcl/gcl-calendar.h
+Copyright:
+ Copyright 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+ Copyright 1998 Cesar Miquel and Shawn T. Amundson
+License: LGPL-2+
+ On Debian systems, the complete text of the version 2 of GNU Library
+ Lesser Public License can be found in file
+ "/usr/share/common-licenses/LGPL-2".
+
+GPL-2+ can also be treated as version 3 of GNU General Public License.
+On Debian systems, the complete text may be found in
+/usr/share/common-licenses/GPL-3.
+
+LGPL-2+ can also be treated as version 2.1 or 3 of GNU General Lesser
+Public License.  On Debian systems, the complete text may be found in
+/usr/share/common-licenses/LGPL-2.1 and
+/usr/share/common-licenses/LGPL-3.
+
+LGPL-2.1+ can also be treated as version 3 of GNU General Lesser Public
+License.  On Debian systems, the complete text may be found in
+/usr/share/common-licenses/LGPL-3.

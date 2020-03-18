@@ -1,0 +1,8 @@
+I:12136871
+E:ID_PATH=platform-11220000.sound
+E:ID_PATH_TAG=platform-11220000_sound
+E:ID_FOR_SEAT=sound-platform-11220000_sound
+E:SOUND_INITIALIZED=1
+E:SYSTEMD_WANTS=sound.target
+G:systemd
+G:seat

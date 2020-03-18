@@ -1,0 +1,6 @@
+I:50981082
+E:ID_MM_CANDIDATE=1
+E:ID_NET_DRIVER=bridge
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/docker0
+G:systemd

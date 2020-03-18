@@ -1,0 +1,10 @@
+I:28701424
+E:ID_NET_NAME_MAC=wlx0008220adcfb
+E:ID_OUI_FROM_DATABASE=InPro Comm
+E:ID_MM_CANDIDATE=1
+E:ID_PATH=platform-180f0000.wifi
+E:ID_PATH_TAG=platform-180f0000_wifi
+E:ID_NET_DRIVER=mt-wifi
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/wlan0
+G:systemd

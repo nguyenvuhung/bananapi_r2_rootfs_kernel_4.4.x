@@ -1,0 +1,624 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LunarCalendar: liblunar Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="liblunar Reference Manual">
+<link rel="up" href="index.html" title="liblunar Reference Manual">
+<link rel="prev" href="lunar-lunardate.html" title="LunarDate">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#lunar-LunarCalendar.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><img src="up-insensitive.png" width="16" height="16" border="0"></td>
+<td><a accesskey="p" href="lunar-lunardate.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><img src="right-insensitive.png" width="16" height="16" border="0"></td>
+</tr></table>
+<div class="refentry">
+<a name="lunar-LunarCalendar"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="lunar-LunarCalendar.top_of_page"></a>LunarCalendar</span></h2>
+<p>LunarCalendar — a gtk widget that can displays a chinese lunar calendar</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="lunar-LunarCalendar.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GtkWidget</span> *
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-new" title="lunar_calendar_new ()">lunar_calendar_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-select-month" title="lunar_calendar_select_month ()">lunar_calendar_select_month</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-select-day" title="lunar_calendar_select_day ()">lunar_calendar_select_day</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-mark-day" title="lunar_calendar_mark_day ()">lunar_calendar_mark_day</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-unmark-day" title="lunar_calendar_unmark_day ()">lunar_calendar_unmark_day</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-clear-marks" title="lunar_calendar_clear_marks ()">lunar_calendar_clear_marks</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="lunar-LunarCalendar.html#LunarCalendarDisplayOptions" title="enum LunarCalendarDisplayOptions"><span class="returnvalue">LunarCalendarDisplayOptions</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-get-display-options" title="lunar_calendar_get_display_options ()">lunar_calendar_get_display_options</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-set-display-options" title="lunar_calendar_set_display_options ()">lunar_calendar_set_display_options</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-display-options" title="lunar_calendar_display_options ()">lunar_calendar_display_options</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-get-date" title="lunar_calendar_get_date ()">lunar_calendar_get_date</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-freeze" title="lunar_calendar_freeze ()">lunar_calendar_freeze</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="lunar-LunarCalendar.html#lunar-calendar-thaw" title="lunar_calendar_thaw ()">lunar_calendar_thaw</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="lunar-LunarCalendar.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar">LunarCalendar</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="lunar-LunarCalendar.html#LunarCalendarDisplayOptions" title="enum LunarCalendarDisplayOptions">LunarCalendarDisplayOptions</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="lunar-LunarCalendar.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;lunar/lunar.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="lunar-LunarCalendar.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="lunar-LunarCalendar.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="lunar-calendar-new"></a><h3>lunar_calendar_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">GtkWidget</span> *
+lunar_calendar_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Creates a new calendar, with the current date being selected.</p>
+<div class="refsect3">
+<a name="id-1.4.7.2.5"></a><h4>Returns</h4>
+<p> a newly <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> widget</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-select-month"></a><h3>lunar_calendar_select_month ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+lunar_calendar_select_month (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                             <em class="parameter"><code><span class="type">guint</span> month</code></em>,
+                             <em class="parameter"><code><span class="type">guint</span> year</code></em>);</pre>
+<p>Shifts the calendar to a different month.</p>
+<div class="refsect3">
+<a name="id-1.4.7.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>a month number between 0 and 11.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>year</p></td>
+<td class="parameter_description"><p>the year the month is in.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.7.3.6"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code>, always</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-select-day"></a><h3>lunar_calendar_select_day ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_select_day (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                           <em class="parameter"><code><span class="type">guint</span> day</code></em>);</pre>
+<p>Selects a day from the current month.</p>
+<div class="refsect3">
+<a name="id-1.4.7.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>the day number between 1 and 31, or 0 to unselect
+the currently selected day.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-mark-day"></a><h3>lunar_calendar_mark_day ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+lunar_calendar_mark_day (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                         <em class="parameter"><code><span class="type">guint</span> day</code></em>);</pre>
+<p>Places a visual marker on a particular day.</p>
+<div class="refsect3">
+<a name="id-1.4.7.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>the day number to mark between 1 and 31.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.7.5.6"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code>, always</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-unmark-day"></a><h3>lunar_calendar_unmark_day ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+lunar_calendar_unmark_day (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                           <em class="parameter"><code><span class="type">guint</span> day</code></em>);</pre>
+<p>Removes the visual marker from a particular day.</p>
+<div class="refsect3">
+<a name="id-1.4.7.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>the day number to unmark between 1 and 31.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.7.6.6"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code>, always</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-clear-marks"></a><h3>lunar_calendar_clear_marks ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_clear_marks (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>);</pre>
+<p>Remove all visual markers.</p>
+<div class="refsect3">
+<a name="id-1.4.7.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-get-display-options"></a><h3>lunar_calendar_get_display_options ()</h3>
+<pre class="programlisting"><a class="link" href="lunar-LunarCalendar.html#LunarCalendarDisplayOptions" title="enum LunarCalendarDisplayOptions"><span class="returnvalue">LunarCalendarDisplayOptions</span></a>
+lunar_calendar_get_display_options (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>);</pre>
+<p>Returns the current display options of <em class="parameter"><code>calendar</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.7.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.7.8.6"></a><h4>Returns</h4>
+<p> the display options.</p>
+</div>
+<p class="since">Since: 2.4</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-set-display-options"></a><h3>lunar_calendar_set_display_options ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_set_display_options (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                                    <em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendarDisplayOptions" title="enum LunarCalendarDisplayOptions"><span class="type">LunarCalendarDisplayOptions</span></a> flags</code></em>);</pre>
+<p>Sets display options (whether to display the heading and the month  
+headings).</p>
+<div class="refsect3">
+<a name="id-1.4.7.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>flags</p></td>
+<td class="parameter_description"><p>the display options to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: 2.4</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-display-options"></a><h3>lunar_calendar_display_options ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_display_options (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                                <em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendarDisplayOptions" title="enum LunarCalendarDisplayOptions"><span class="type">LunarCalendarDisplayOptions</span></a> flags</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">lunar_calendar_display_options</code> has been deprecated since version 2.4 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="lunar-LunarCalendar.html#lunar-calendar-set-display-options" title="lunar_calendar_set_display_options ()"><code class="function">lunar_calendar_set_display_options()</code></a> instead</p>
+</div>
+<p>Sets display options (whether to display the heading and the month headings).</p>
+<div class="refsect3">
+<a name="id-1.4.7.10.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>flags</p></td>
+<td class="parameter_description"><p>the display options to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-get-date"></a><h3>lunar_calendar_get_date ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_get_date (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>,
+                         <em class="parameter"><code><span class="type">guint</span> *year</code></em>,
+                         <em class="parameter"><code><span class="type">guint</span> *month</code></em>,
+                         <em class="parameter"><code><span class="type">guint</span> *day</code></em>);</pre>
+<p>Obtains the selected date from a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.4.7.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>year</p></td>
+<td class="parameter_description"><p>location to store the year number, or <code class="literal">NULL</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>location to store the month number (between 0 and 11), or <code class="literal">NULL</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>location to store the day number (between 1 and 31), or <code class="literal">NULL</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-freeze"></a><h3>lunar_calendar_freeze ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_freeze (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>);</pre>
+<div class="warning"><p><code class="literal">lunar_calendar_freeze</code> has been deprecated since version 2.8 and should not be used in newly-written code.</p></div>
+<p>Does nothing. Previously locked the display of the calendar until
+it was thawed with <a class="link" href="lunar-LunarCalendar.html#lunar-calendar-thaw" title="lunar_calendar_thaw ()"><code class="function">lunar_calendar_thaw()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.4.7.12.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-calendar-thaw"></a><h3>lunar_calendar_thaw ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_calendar_thaw (<em class="parameter"><code><a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a> *calendar</code></em>);</pre>
+<div class="warning"><p><code class="literal">lunar_calendar_thaw</code> has been deprecated since version 2.8 and should not be used in newly-written code.</p></div>
+<p>Does nothing. Previously defrosted a calendar; all the changes made
+since the last <a class="link" href="lunar-LunarCalendar.html#lunar-calendar-freeze" title="lunar_calendar_freeze ()"><code class="function">lunar_calendar_freeze()</code></a> were displayed.</p>
+<div class="refsect3">
+<a name="id-1.4.7.13.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>calendar</p></td>
+<td class="parameter_description"><p>a <a class="link" href="lunar-LunarCalendar.html#LunarCalendar" title="struct LunarCalendar"><span class="type">LunarCalendar</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="lunar-LunarCalendar.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="LunarCalendar"></a><h3>struct LunarCalendar</h3>
+<pre class="programlisting">struct LunarCalendar {
+  GtkWidget widget;
+  
+  GtkStyle  *header_style;
+  GtkStyle  *label_style;
+  
+  gint month;
+  gint year;
+  gint selected_day;
+  
+  gint day_month[6][7];
+  gint day[6][7];
+  
+  gint num_marked_dates;
+  gint marked_date[31];
+  LunarCalendarDisplayOptions  display_flags;
+  GdkColor marked_date_color[31];
+  
+  GdkGC *gc;			/* unused */
+  GdkGC *xor_gc;		/* unused */
+
+  gint focus_row;
+  gint focus_col;
+
+  gint highlight_row;
+  gint highlight_col;
+  
+  LunarCalendarPrivate *priv;
+  gchar grow_space [32];
+
+  /* Padding for future expansion */
+  void (*_gtk_reserved1) (void);
+  void (*_gtk_reserved2) (void);
+  void (*_gtk_reserved3) (void);
+  void (*_gtk_reserved4) (void);
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LunarCalendarDisplayOptions"></a><h3>enum LunarCalendarDisplayOptions</h3>
+<p>
+</p>
+<div class="refsect3">
+<a name="id-1.4.8.3.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-CALENDAR-SHOW-HEADING:CAPS"></a>LUNAR_CALENDAR_SHOW_HEADING</p></td>
+<td class="enum_member_description"> </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-CALENDAR-SHOW-DAY-NAMES:CAPS"></a>LUNAR_CALENDAR_SHOW_DAY_NAMES</p></td>
+<td class="enum_member_description"> </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-CALENDAR-NO-MONTH-CHANGE:CAPS"></a>LUNAR_CALENDAR_NO_MONTH_CHANGE</p></td>
+<td class="enum_member_description"> </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-CALENDAR-SHOW-WEEK-NUMBERS:CAPS"></a>LUNAR_CALENDAR_SHOW_WEEK_NUMBERS</p></td>
+<td class="enum_member_description"> </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-CALENDAR-WEEK-START-MONDAY:CAPS"></a>LUNAR_CALENDAR_WEEK_START_MONDAY</p></td>
+<td class="enum_member_description"> </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-CALENDAR-SHOW-LUNAR:CAPS"></a>LUNAR_CALENDAR_SHOW_LUNAR</p></td>
+<td class="enum_member_description"> </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

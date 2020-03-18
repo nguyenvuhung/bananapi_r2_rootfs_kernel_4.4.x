@@ -1,0 +1,16 @@
+# This is private data. Do not parse.
+UID=0
+USER=root
+ACTIVE=1
+STATE=active
+REMOTE=0
+TYPE=tty
+CLASS=user
+SCOPE=session-c2.scope
+FIFO=/run/systemd/sessions/c2.ref
+TTY=/dev/ttyS0
+SERVICE=login
+POSITION=0
+LEADER=1643
+REALTIME=1578472162382889
+MONOTONIC=70278821

@@ -1,0 +1,58 @@
+Debian notes for Lucene-2.2.0
+-----------------------------
+
+There are two binary packages:
+- liblucene2-java contains the core lucene library and most 
+  contrib libraries
+- liblucene2-java-doc contains Lucene documentation, API
+  docs, and example applications
+
+Not all contrib libraries are included:
+- gdata-server depends on many libraries, of which at least the 
+  Google Data API (com.google.gdata) packages are not in Debian
+
+The Javadoc(TM) for Lucene are included in the liblucene2-java-doc
+package, in /usr/share/doc/liblucene2-java-doc/docs/api
+
+The Lucene demo applications are included in the liblucene2-java-doc
+package, in /usr/share/doc/liblucene2-java-doc/demo. The demonstration 
+applications require additional configuration to be used. To configure 
+and run the demonstration command-line applications for Lucene, see 
+the following documentation and source code walkthrough:
+
+ /usr/share/doc/liblucene2-java-doc/docs/demo.html
+
+Several modifications are required if you wish to run the Lucene web
+application on a stock Debian tomcat5.5 configuration. Note that Debian's
+default Tomcat configuration may have changed since these instructions
+were written.
+
+1) The Lucene web application looks for Lucene index data in
+   /opt/lucene/index, although we may change this location in a 
+   future version of the Debian package. When calling IndexHTML,
+   make sure the index files are stored there.
+
+2) Install the Lucene demo application by decompressing
+   /usr/share/doc/liblucene2-java-doc/demo/luceneweb.war.gz
+   and copying the resulting luceneweb.war file to 
+   /var/lib/tomcat5.5/webapps:
+   gzip -cd /usr/share/doc/liblucene2-java-doc/demo/luceneweb.war.gz  > /var/lib/tomcat5.5/webapps/luceneweb.war 
+
+3) You will need to add a file (e.g., named 60lucenedemo.policy)
+   to /etc/tomcat5.5/policy.d/ to allow the Lucene demo web application
+   to access a number of files and settings:
+
+      // Allows luceneweb demo to work
+      grant codeBase "file:${catalina.base}/webapps/luceneweb/-" {
+	      permission java.util.PropertyPermission "disableLuceneLocks", "read";
+	      permission java.util.PropertyPermission "java.io.tmpdir", "read";
+	      permission java.util.PropertyPermission "org.apache.lucene.*", "read";
+	      permission java.io.FilePermission "/opt/lucene/index", "read,write";
+	      permission java.io.FilePermission "/opt/lucene/index/*", "read,write";
+	      permission java.io.FilePermission "/var/lib/tomcat5.5/temp", "read,write,delete";
+	      permission java.io.FilePermission "/var/lib/tomcat5.5/temp/*", "read,write,delete";
+      };
+
+ -- Barry Hawkins <barryh@case.internal.alltc.org>, Fri,  5 May 2006 23:53:38 -0400
+    Jan-Pascal van Best <janpascal@vanbest.org>, Thu, 12 Jul 2007 07:57:20 +0200
+

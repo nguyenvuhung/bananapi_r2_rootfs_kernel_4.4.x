@@ -1,0 +1,35 @@
+wxPython 3.0 for Debian
+=======================
+
+The following packages are potentially built from the wxpython3.0 source
+package:
+
+python-wxgtk3.0		    Python binding to wxGTK
+python-wxversion	    The wxversion.py version selector (present since
+			    wxPython2.6)
+python-wxtools		    The ancillary tools from the wxPython distribution.
+
+The latter two can only be provided by one version of wxpython, so when a
+new release series is packaged, they will get switched to being built from
+that.
+
+Notable changes from the wxwidgets2.8 packages
+----------------------------------------------
+
+For wxPython 2.8, the wxPython packages were built by the wxwidgets2.8
+source package (which actually contained the wxPython source release).
+
+This always had its problems, but what finally forced a change was that the gap
+between a wxWidgets release and the corresponding wxPython release now seems to
+be several months.
+
+In the wxwidgets2.8 packaging, there was a python-wxgtk2.8-dbg package which
+had a separate build of wxPython built against a separate build of the C++
+library, which had been built with __WXDEBUG__ enabled.  Upstream now enable
+__WXDEBUG__ by default, so we no longer need this parallel build of the C++
+library or wxPython.  For more information on the upstream __WXDEBUG__ changes
+since 2.8, please see:
+
+	  http://docs.wxwidgets.org/3.0.0/overview_debugging.html
+
+ -- Olly Betts <olly@survex.com>  Fri, 22 May 2015 17:03:35 +1200

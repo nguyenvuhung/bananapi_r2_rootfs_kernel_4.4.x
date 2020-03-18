@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="liblunar Reference Manual" link="index.html" author="" name="lunar" version="2" language="c">
+  <chapters>
+    <sub name="Intialization" link="lunar-lunarmain.html"/>
+    <sub name="LunarDate" link="lunar-lunardate.html"/>
+    <sub name="LunarCalendar" link="lunar-LunarCalendar.html"/>
+  </chapters>
+  <functions>
+    <keyword type="function" name="lunar_init ()" link="lunar-lunarmain.html#lunar-init"/>
+    <keyword type="function" name="lunar_date_error_quark ()" link="lunar-lunardate.html#lunar-date-error-quark"/>
+    <keyword type="function" name="lunar_date_new ()" link="lunar-lunardate.html#lunar-date-new"/>
+    <keyword type="function" name="lunar_date_set_solar_date ()" link="lunar-lunardate.html#lunar-date-set-solar-date"/>
+    <keyword type="function" name="lunar_date_set_lunar_date ()" link="lunar-lunardate.html#lunar-date-set-lunar-date"/>
+    <keyword type="function" name="lunar_date_get_jieri ()" link="lunar-lunardate.html#lunar-date-get-jieri"/>
+    <keyword type="function" name="lunar_date_strftime ()" link="lunar-lunardate.html#lunar-date-strftime"/>
+    <keyword type="function" name="lunar_date_free ()" link="lunar-lunardate.html#lunar-date-free"/>
+    <keyword type="typedef" name="GDateHour" link="lunar-lunardate.html#GDateHour"/>
+    <keyword type="struct" name="LunarDate" link="lunar-lunardate.html#LunarDate"/>
+    <keyword type="macro" name="LUNAR_DATE_ERROR" link="lunar-lunardate.html#LUNAR-DATE-ERROR:CAPS"/>
+    <keyword type="enum" name="enum LunarDateError" link="lunar-lunardate.html#LunarDateError"/>
+    <keyword type="function" name="lunar_calendar_new ()" link="lunar-LunarCalendar.html#lunar-calendar-new"/>
+    <keyword type="function" name="lunar_calendar_select_month ()" link="lunar-LunarCalendar.html#lunar-calendar-select-month"/>
+    <keyword type="function" name="lunar_calendar_select_day ()" link="lunar-LunarCalendar.html#lunar-calendar-select-day"/>
+    <keyword type="function" name="lunar_calendar_mark_day ()" link="lunar-LunarCalendar.html#lunar-calendar-mark-day"/>
+    <keyword type="function" name="lunar_calendar_unmark_day ()" link="lunar-LunarCalendar.html#lunar-calendar-unmark-day"/>
+    <keyword type="function" name="lunar_calendar_clear_marks ()" link="lunar-LunarCalendar.html#lunar-calendar-clear-marks"/>
+    <keyword type="function" name="lunar_calendar_get_display_options ()" link="lunar-LunarCalendar.html#lunar-calendar-get-display-options" since="2.4"/>
+    <keyword type="function" name="lunar_calendar_set_display_options ()" link="lunar-LunarCalendar.html#lunar-calendar-set-display-options" since="2.4"/>
+    <keyword type="function" name="lunar_calendar_display_options ()" link="lunar-LunarCalendar.html#lunar-calendar-display-options" deprecated="2.4: Use lunar_calendar_set_display_options() instead"/>
+    <keyword type="function" name="lunar_calendar_get_date ()" link="lunar-LunarCalendar.html#lunar-calendar-get-date"/>
+    <keyword type="function" name="lunar_calendar_freeze ()" link="lunar-LunarCalendar.html#lunar-calendar-freeze" deprecated="2.8:"/>
+    <keyword type="function" name="lunar_calendar_thaw ()" link="lunar-LunarCalendar.html#lunar-calendar-thaw" deprecated="2.8:"/>
+    <keyword type="struct" name="struct LunarCalendar" link="lunar-LunarCalendar.html#LunarCalendar"/>
+    <keyword type="enum" name="enum LunarCalendarDisplayOptions" link="lunar-LunarCalendar.html#LunarCalendarDisplayOptions"/>
+    <keyword type="constant" name="LUNAR_DATE_ERROR_INTERNAL" link="lunar-lunardate.html#LUNAR-DATE-ERROR-INTERNAL:CAPS"/>
+    <keyword type="constant" name="LUNAR_DATE_ERROR_DAY" link="lunar-lunardate.html#LUNAR-DATE-ERROR-DAY:CAPS"/>
+    <keyword type="constant" name="LUNAR_DATE_ERROR_YEAR" link="lunar-lunardate.html#LUNAR-DATE-ERROR-YEAR:CAPS"/>
+    <keyword type="constant" name="LUNAR_DATE_ERROR_LEAP" link="lunar-lunardate.html#LUNAR-DATE-ERROR-LEAP:CAPS"/>
+    <keyword type="constant" name="LUNAR_CALENDAR_SHOW_HEADING" link="lunar-LunarCalendar.html#LUNAR-CALENDAR-SHOW-HEADING:CAPS"/>
+    <keyword type="constant" name="LUNAR_CALENDAR_SHOW_DAY_NAMES" link="lunar-LunarCalendar.html#LUNAR-CALENDAR-SHOW-DAY-NAMES:CAPS"/>
+    <keyword type="constant" name="LUNAR_CALENDAR_NO_MONTH_CHANGE" link="lunar-LunarCalendar.html#LUNAR-CALENDAR-NO-MONTH-CHANGE:CAPS"/>
+    <keyword type="constant" name="LUNAR_CALENDAR_SHOW_WEEK_NUMBERS" link="lunar-LunarCalendar.html#LUNAR-CALENDAR-SHOW-WEEK-NUMBERS:CAPS"/>
+    <keyword type="constant" name="LUNAR_CALENDAR_WEEK_START_MONDAY" link="lunar-LunarCalendar.html#LUNAR-CALENDAR-WEEK-START-MONDAY:CAPS"/>
+    <keyword type="constant" name="LUNAR_CALENDAR_SHOW_LUNAR" link="lunar-LunarCalendar.html#LUNAR-CALENDAR-SHOW-LUNAR:CAPS"/>
+  </functions>
+</book>

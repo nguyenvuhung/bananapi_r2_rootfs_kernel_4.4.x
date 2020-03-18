@@ -1,0 +1,17 @@
+rlimit {mask {cpu fsize data stack core rss nproc nofile memlock as locks sigpending msgqueue nice rtprio rttime
+}
+}
+capability {0xffffff
+}
+file {mask {create read write exec append mmap_exec link lock
+}
+}
+domain {change_profile {yes
+}
+change_onexec {yes
+}
+change_hatv {yes
+}
+change_hat {yes
+}
+}

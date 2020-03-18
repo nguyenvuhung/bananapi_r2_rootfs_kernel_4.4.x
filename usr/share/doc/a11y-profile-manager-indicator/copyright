@@ -1,0 +1,15 @@
+Format: http://dep.debian.net/deps/dep5/
+Upstream-Name: a11y-profile-manager
+Source: http://launchpad.net/a11y-profile-manager/
+
+Files: *
+Copyright: Copyright 2016 Canonical Ltd.
+License: GPL-3+
+ On Debian systems the full text of the GNU General Public License can be found
+ in the `/usr/share/common-licenses/GPL-3' file.
+
+Files: debian/*
+Copyright: Copyright 2016 Luke Yelavich <luke.yelavich@canonical.com>
+License: GPL-3
+ On Debian systems the full text of the GNU General Public License can be found
+ in the `/usr/share/common-licenses/GPL-3' file.
